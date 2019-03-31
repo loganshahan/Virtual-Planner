@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var todo = sequelize.define("Todos", {
+    var Todo = sequelize.define("Todos", {
       noteId: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -18,15 +18,15 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: false
       }
     });
-    todo.associate = function(models) {
+    Todo.associate = function(models) {
         // We're saying that a todo should belong to a User
         // A todo can't be created without a User due to the foreign key constraint
-        todo.belongsTo(models.User, {
+        Todo.belongsTo(models.User, {
           foreignKey: {
             allowNull: false
           }
         });
       };
-    return todo;
+    return Todo;
   };
   
