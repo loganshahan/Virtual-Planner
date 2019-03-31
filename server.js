@@ -16,17 +16,17 @@ const db = require("./models");
 // DATABASE MODELS GO BEFORE PASSPORT
 require('./Services/passport');
 
-
 // Don't forget to change it to your db password in 'config.json
 
 app.use(bodyParser.json());
+// user is logged in for one day
 app.use(cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 2,
+    maxAge: 1 * 24 * 60 * 60 * 1000,
     keys: [keys.cookieKey]
 })
 );
 
-// Middleware
+// Passport Middleware
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -35,6 +35,7 @@ require('./routes/authRoutes')(app);
 require('./routes/apiRoutes')(app);
 
 
+// React Front-End 
 if(process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
   const path = require('path');

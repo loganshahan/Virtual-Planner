@@ -1,12 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
-     googleID: {
+    id: {
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    googleID: {
      type:  DataTypes.STRING,
-     primaryKey: true,
      allowNull: false,
     },
     displayName: DataTypes.STRING
-    
     
   });
   return User;
