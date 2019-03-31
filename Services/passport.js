@@ -4,16 +4,13 @@ const keys = require('../config/keys');
 const db = require('../models')
 
 passport.serializeUser((user, done) => {
-    return done(null, user.googleID);
- 
+      done(null, user.id);
  });
  
- passport.deserializeUser((id, done) => {
+passport.deserializeUser((id, done) => {
  
-    db.User.findById(id).then(function(client) {
-        return done(null, client);
-      }, function(error) {
-        return done(err); 
+    db.User.findById(id).then( (user) => {
+      done(null, user);
       });
  
  });
@@ -28,7 +25,7 @@ passport.use( new GoogleStrategy({
     console.log('google id: ', profile.id);
     console.log('google display name: ', profile.displayName);
     
-    //  HERE YOU WILL SAVE IT TO THE DATABASE IF THERE IS NOT A USER IN THE DATABASE
+        // HERE YOU GET THE EXISTING USER
     const existingUser = await db.User.findOne({where: {googleID: profile.id}}) 
         
           if(existingUser) {
@@ -36,7 +33,7 @@ passport.use( new GoogleStrategy({
 
           } else {
 
-        // HERE YOU GET THE EXISTING USER
+        //  HERE YOU WILL SAVE IT TO THE DATABASE IF THERE IS NOT A USER IN THE DATABASE
     const saveUser =  await db.User.create({
         
                 googleID: profile.id,
