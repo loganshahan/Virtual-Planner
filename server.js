@@ -1,16 +1,38 @@
+// npm scripts:
+// server: npm run server
+// client: npm run client
+// both:   npm run dev
+
 require("dotenv").config();
 const express = require("express");
+const cookieSession = require('cookie-session');
+const passport = require('passport');
 const bodyParser = require('body-parser');
+const keys = require('./config/keys');
+const app = express();
 
 const db = require("./models");
 
-const app = express();
+// DATABASE MODELS GO BEFORE PASSPORT
+require('./Services/passport');
+
+
+// Don't forget to change it to your db password in 'config.json
+
 app.use(bodyParser.json());
-const PORT = process.env.PORT || 4000;
+app.use(cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 2,
+    keys: [keys.cookieKey]
+})
+);
 
 // Middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Routes
+require('./routes/authRoutes')(app);
+require('./routes/apiRoutes')(app);
 
 
 if(process.env.NODE_ENV === 'production') {
@@ -19,13 +41,7 @@ if(process.env.NODE_ENV === 'production') {
   app.get('*', (req, res) => {
       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
-
 };
-
-
-// Routes
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: false };
 
@@ -33,6 +49,7 @@ if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
+const PORT = process.env.PORT || 4000;
 db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
     console.log(
