@@ -1,7 +1,6 @@
-DROP DATABASE IF EXISTS TeamGermany;
-CREATE DATABASE TeamGermany;
-USE TeamGermany;
-
+DROP DATABASE IF EXISTS FourGer;
+CREATE DATABASE FourGer;
+USE FourGer;
 CREATE TABLE todos
 (
 	noteID int NOT NULL AUTO_INCREMENT,
@@ -9,7 +8,7 @@ CREATE TABLE todos
     body varchar(255) NOT NULL,
     category varchar(255) NOT NULL,
 	PRIMARY KEY (noteID),
-    FOREIGN KEY (userID) REFERENCES Users(userID)
+    FOREIGN KEY (id) REFERENCES User(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 
@@ -20,3 +19,4 @@ CREATE TABLE todos
 
 DROP DATABASE IF EXISTS testdb;
 CREATE DATABASE testdb;
+

@@ -1,39 +1,56 @@
+// npm scripts:
+// server: npm run server
+// client: npm run client
+// both:   npm run dev
+
 require("dotenv").config();
-var express = require("express");
-var exphbs = require("express-handlebars");
+const express = require("express");
+const cookieSession = require('cookie-session');
+const passport = require('passport');
+const bodyParser = require('body-parser');
+const keys = require('./config/keys');
+const app = express();
 
-var db = require("./models");
+const db = require("./models");
 
-var app = express();
-var PORT = process.env.PORT || 3000;
+// DATABASE MODELS GO BEFORE PASSPORT
+require('./Services/passport');
 
-// Middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-app.use(express.static("public"));
+// Don't forget to change it to your db password in 'config.json
 
-// Handlebars
-app.engine(
-  "handlebars",
-  exphbs({
-    defaultLayout: "main"
-  })
+app.use(bodyParser.json());
+// user is logged in for one day
+app.use(cookieSession({
+    maxAge: 1 * 24 * 60 * 60 * 1000,
+    keys: [keys.cookieKey]
+})
 );
-app.set("view engine", "handlebars");
+
+// Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+require('./routes/authRoutes')(app);
+require('./routes/apiRoutes')(app);
+
+
+// React Front-End 
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+  const path = require('path');
+  app.get('*', (req, res) => {
+      res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+};
 
 var syncOptions = { force: false };
 
-// If running a test, set syncOptions.force to true
-// clearing the `testdb`
 if (process.env.NODE_ENV === "test") {
   syncOptions.force = true;
 }
 
-// Starting the server, syncing our models ------------------------------------/
+const PORT = process.env.PORT || 4000;
 db.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
     console.log(
