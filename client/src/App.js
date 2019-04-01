@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
+import {Nav} from './components/Nav.js';
+import {Container} from './components/Container.js';
+import {AppContainer} from './components/AppContainer';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1> Landing Page </h1>
+        <Nav />
+        <Container />
       </div>
     );
   }
