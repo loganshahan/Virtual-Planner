@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-    var Todo = sequelize.define("Todos", {
+    var Todo = sequelize.define("Todo", {
       noteId: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
