@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export class AppContainer extends Component {
+export class Header extends Component {
   render() {
     return (
       <div>
@@ -10,4 +10,4 @@ export class AppContainer extends Component {
   }
 }
 
-export default AppContainer
+export default Header

@@ -32,7 +32,7 @@ app.use(passport.session());
 
 // Routes
 require('./routes/authRoutes')(app);
-require('./routes/apiRoutes')(app);
+require('./routes/todoApiRoutes')(app);
 
 
 // React Front-End 
