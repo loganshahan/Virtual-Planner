@@ -126,3 +126,16 @@ form {
 .display-none {
   display: none;
 }
+
+/*BUDGET*/
+
+.custom_table {
+  border: 1px solid black;
+  margin: 5px;
+}
+.custom_table .col {
+  margin-right: 1px solid black;;
+}
+.custom_border {
+  border-right: 1px solid black !important;
+}
