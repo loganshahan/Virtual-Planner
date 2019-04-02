@@ -48,7 +48,7 @@ module.exports = function (app) {
     });
   
     // PUT route to update a category
-    app.put("/api/todos", function(req, res) {
+    app.put("/api/categories", function(req, res) {
       db.Category.update(
         req.body,
         {
