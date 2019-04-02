@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
     var Todo = sequelize.define("Todo", {
-      noteId: {
+      id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
@@ -10,6 +10,10 @@ module.exports = function(sequelize, DataTypes) {
        allowNull: false,
       },
       body: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      category: {
         type: DataTypes.STRING,
         allowNull: false
       }
@@ -28,7 +32,9 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
           }
         });
+
       };
+
     return Todo;
   };
   
