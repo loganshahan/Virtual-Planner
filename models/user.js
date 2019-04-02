@@ -15,6 +15,10 @@ module.exports = function(sequelize, DataTypes) {
   User.associate = function(models) {
     // Associating User with todo
     // When an User is deleted, also delete any associated todos
+    User.hasMany(models.Category, {
+      onDelete: "cascade"
+    });
+
     User.hasMany(models.Todo, {
       onDelete: "cascade"
     });
