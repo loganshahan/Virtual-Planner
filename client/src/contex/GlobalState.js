@@ -14,7 +14,6 @@ export class GlobalState extends Component {
         this.setState({
             login: data
         });
-        console.log(this.state.login)
     };
 
   
