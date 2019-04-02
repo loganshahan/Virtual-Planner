@@ -16,13 +16,23 @@ export class GlobalState extends Component {
         });
     };
 
+    postTodo = async (values) => {
+        // console.log(values)
+       await axios.post('/api/todos', values);
+    };
+    postCategory = async (values) => {
+       await axios.post('/api/categories', values);
+    };
+
   
   render() {
     return (
      <UserContext.Provider
         value={{
             getUser: this.getUser,
-            login: this.state.login
+            postTodo: this.postTodo,
+            login: this.state.login,
+            postCategory: this.postCategory
         }}
      >
         {this.props.children}
