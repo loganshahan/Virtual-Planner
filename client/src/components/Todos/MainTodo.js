@@ -8,7 +8,7 @@ export class MainTodo extends Component {
         UserId: this.context.login.id,
         title: '',
         body: '',
-        category: 'select'
+        category: 'select',
     };
 
     handleSubmit = (e) => {
@@ -37,6 +37,7 @@ export class MainTodo extends Component {
         });
     };
 
+
   render() {
     const showModal = this.props.show ? "modal display-block " : "modal display-none";
 
@@ -57,8 +58,7 @@ export class MainTodo extends Component {
             />
         </div>
         <div className="form-group">
-            <input 
-            type="text"
+            <textarea 
             className="form-control" 
             id="body" 
             placeholder="Body..."
@@ -94,6 +94,7 @@ export class MainTodo extends Component {
         </form>
 
       </div>
+
     
     )
   }
