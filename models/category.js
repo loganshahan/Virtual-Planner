@@ -1,11 +1,11 @@
 module.exports = function(sequelize, DataTypes) {
     var Category = sequelize.define("Category", {
-      categoryId: {
+      id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
       },
-      title: {
+      category: {
        type:  DataTypes.STRING,
        allowNull: false,
       }
@@ -13,13 +13,20 @@ module.exports = function(sequelize, DataTypes) {
     Category.associate = function(models) {
         // We're saying that a todo should belong to a User
         // A category can't be created without a User due to the foreign key constraint
-        Category.belongsTo(models.User, {
-          foreignKey: {
-            allowNull: false
-          }
-        });
+        // Category.belongsTo(models.User, {
+        //   foreignKey: {
+        //     allowNull: false
+        //   }
+        // });
 
-        Category.hasMany(models.Todo, {
+        // Category.belongsTo(models.Todo, {
+        //   foreignKey: {
+        //     allowNull: false
+        //   }
+        // });
+        
+
+        Category.hasOne(models.Todo, {
           onDelete: "cascade"
         });
       };
