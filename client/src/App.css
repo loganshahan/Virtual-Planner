@@ -139,3 +139,18 @@ form {
 .custom_border {
   border-right: 1px solid black !important;
 }
+.form-inline .form-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 auto !important;
+}
+#desc, #amt {
+  width: 100% !important;
+}
+.budget_form .form-group {
+  margin: 0px;
+}
+.budget_form .form-group {
+  margin: 5px !important;
+}
