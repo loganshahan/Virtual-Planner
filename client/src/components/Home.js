@@ -5,7 +5,8 @@ import MainTodo from './Todos/MainTodo';
 export class Home extends Component {
 
     state= {
-      show: false
+      show: false,
+      todos: []
     }
     
     static contextType = UserContext;
@@ -18,6 +19,36 @@ export class Home extends Component {
       this.setState({ show: false });
     };
 
+    // get api call
+    componentDidMount() {
+      fetch("http://localhost:3000/api/todos")
+        .then(res => res.json())
+        .then(
+          (result) => {
+            // console.log(result)
+            let todos = result.map((todo, index) => {
+              return(
+                <div key={index}>
+                  <p>Title: {todo.title}<br/>
+                  Body: {todo.body}<br/>
+                  Category: {todo.category}</p>
+                </div>
+              )
+            })
+            this.setState({
+              todos: todos
+            });
+          },
+          (error) => {
+            this.setState({
+              isLoaded: true,
+              error
+            });
+          }
+        )
+    }
+
+
   render() {
     return (
       <div>
@@ -27,6 +58,7 @@ export class Home extends Component {
                 {/* get todos container */}
                 <div className="col-md-4">
                     <h2>Existing To Dos</h2>
+                    {this.state.todos}
                 </div>
 
                 {/* filter todos container */}
