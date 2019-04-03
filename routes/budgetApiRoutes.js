@@ -1,0 +1,26 @@
+let db = require("../models");
+
+module.exports = function (app) {
+
+    app.get("/api/transactions", function(req, res) {
+      console.log(req.body)
+        let query = {};
+        if (req.query.id) {
+          query.id = req.query.id;
+        }
+    
+        db.Txns.findAll({
+          where: query,
+          include: [db.User]
+        }).then(function(dbTxns) {
+          res.json(dbTxns);
+        });
+      });
+
+    app.post("/api/transactions", function(req, res) {
+        db.Txns.create(req.body).then(function(dbTxns) {
+            res.json(dbTxns);
+          });
+    });
+
+};
