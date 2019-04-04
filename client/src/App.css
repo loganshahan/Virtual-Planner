@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display|Raleway');
+
+
+:root {
+  --mainHeading: 'Playfair Display', serif;
+  --mainPara: 'Raleway', sans-serif;
+}
+
 .App {
   text-align: center;
+  padding-top: 55px;
 }
 
 .App-logo {
@@ -21,6 +30,12 @@
 
 .App-link {
   color: #61dafb;
+}
+h1, h2, h3, h4, h5 {
+  font-family: var(--mainHeading)
+}
+p, span {
+  font-family: var(--mainPara) !important;
 }
 
 @keyframes App-logo-spin {
