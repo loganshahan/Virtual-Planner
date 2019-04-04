@@ -48,11 +48,12 @@ class MainBudget extends Component {
   render() {
     return (
       <div className="container mt-4">
-        <div className="row">
+  
+        <div className="row mt-3">
           <div className="col-md-7" style={{alignSelf: 'center'}}>
           <Add onAdd={this.add} data={this.state.data}/>
           </div>
-          <div className="col-md-5">
+          <div className="col-md-5" style={{alignSelf: 'center'}}>
           <Balance total={this.state.total} />
           </div>
         </div>

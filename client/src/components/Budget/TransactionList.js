@@ -22,8 +22,8 @@ function TransactionList(props) {
 
   return (
     <Fragment>
+        <div className="container mt-5">
         <h1>Transactions</h1>
-        <div className="container">
             {renderTran()}
         </div>
     </Fragment>
