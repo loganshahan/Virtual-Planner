@@ -6,7 +6,6 @@ export class Nav extends Component {
 
   static contextType = UserContext;
 
-
   renderContent() {
     console.log(this.context)
     switch(this.context.login.id) {
@@ -18,7 +17,9 @@ export class Nav extends Component {
       default:
          return (
            <Fragment>
-            <Link to="/home/MainBudget">My Budget</Link>
+            <Link to="/home/MainTodo">Todo</Link>
+            <Link to="/home/MainBudget">Budget</Link>
+            <Link to="/home/MainCalendar">Calendar</Link>
             <a href="/api/logout" onClick={this.logOut}>log out</a>
             <p style={{marginBottom: 0, color:'white'}}> Welcome {this.context.login.displayName}</p>
            </Fragment>
@@ -27,15 +28,15 @@ export class Nav extends Component {
   }
   render() {
     return (
-        <nav className="navbar navbar-dark bg-dark">
-      <div className="container">
-        <Link className="navbar-brand" to="/">Grello</Link>
-      <div className="custom_nav">
+        <nav className="navbar navbar-dark bg-dark fixed-top">
+          <div className="container">
+            <Link className="navbar-brand" to="/">VH</Link>
+          <div className="custom_nav">
 
-      {this.renderContent()}
-      </div>
+          {this.renderContent()}
+          </div>
 
-      </div>
+          </div>
         </nav>
     )
   }

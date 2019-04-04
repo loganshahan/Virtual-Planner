@@ -3,13 +3,16 @@ import React from 'react'
 function TransactionListEntry(props) {
     const {transaction} = props
     const style = {
-        color: props.transaction.amount > 0 ? 'green' : 'red'
+        color: transaction.amount > 0 ? 'green' : 'red'
     }
   return (
     <div className="row custom_table">
         <div className="col-md-6 custom_border">
-            <span>{props.transaction.description}:</span></div>
-        <div className="col-md-6"><span style={style}> {transaction.amount}</span></div>
+            <h5>{transaction.description}:</h5>
+        </div>
+        <div className="col-md-6">
+          <h5 style={style}> {transaction.amount}</h5>
+        </div>
     </div>
   )
 }
