@@ -6,9 +6,12 @@
     "axios": "^0.18.0",
     "http-proxy-middleware": "^0.19.1",
     "react": "^16.8.6",
+    "react-big-calendar": "^0.20.4",
     "react-dom": "^16.8.6",
+    "react-google-calendar-api": "^1.0.10",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "react_google_calendar": "^2.2.3"
   },
   "scripts": {
     "start": "react-scripts start",

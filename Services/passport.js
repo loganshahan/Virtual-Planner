@@ -22,6 +22,7 @@ passport.use( new GoogleStrategy({
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
     proxy: true
 }, async (accessToken, refreshToken, profile, done) => {
+    console.log(profile)
     console.log('google id: ', profile.id);
     console.log('google display name: ', profile.displayName);
     

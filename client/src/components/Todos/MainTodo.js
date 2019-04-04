@@ -20,7 +20,7 @@ export class MainTodo extends Component {
             body: '',
             category: 'select'
         });
-        this.props.handleClose()
+        this.props.handleClose();
     };
 
     handleChange = (e) => {
@@ -36,7 +36,6 @@ export class MainTodo extends Component {
             category: e.target.value
         });
     };
-
 
   render() {
     const showModal = this.props.show ? "modal display-block " : "modal display-none";
@@ -94,10 +93,9 @@ export class MainTodo extends Component {
         </form>
 
       </div>
-
     
     )
-  }
-}
+  };
+};
 
 export default MainTodo

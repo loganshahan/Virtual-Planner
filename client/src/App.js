@@ -6,8 +6,9 @@ import { BrowserRouter, Route } from 'react-router-dom';
 import Welcome from './components/Welcome';
 import Home from './components/Home'
 import MainTodo from './components/Todos/MainTodo';
+import Todos from './components/Todos/Todos';
 import MainBudget from './components/Budget/MainBudget';
-
+import MainCalendar from './components/Calendar/MainCalendar';
 
 class App extends Component {
 
@@ -40,6 +41,8 @@ class App extends Component {
         <Route exact path="/" component={Home} />
         <Route exact path="/home/addTodo" component={MainTodo} />
         <Route exact path="/home/MainBudget" component={MainBudget} />
+        <Route exact path="/home/MainCalendar" component={MainCalendar} />
+        <Route exact path="/home/MainTodo" component={Todos} />
 
         </Fragment>
         </BrowserRouter>
@@ -51,7 +54,7 @@ class App extends Component {
 
     return (
       
-      <div className="App">
+      <div className="App ">
 
         {this.isLoggedIn()}
 
