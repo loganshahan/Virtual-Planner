@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 
 class Add extends Component {
 
@@ -26,7 +26,8 @@ class Add extends Component {
 
   render() {
     return (
-
+<Fragment>
+<h3>$+ or $- from your budget !</h3>
 <form className="form-inline mb-2 budget_form">
   <div className="form-group mb-2">
     <label htmlFor="desc" className="sr-only">Description</label>
@@ -50,8 +51,9 @@ class Add extends Component {
   type="submit" 
   className="btn btn-secondary mb-1 mt-1"
   onClick={this.add}
-  >Add</button>
+  >Calculate</button>
 </form>
+</Fragment>
 
     )
   }
