@@ -7,7 +7,7 @@ function Balance(props) {
   return (
     <Fragment>
         
-        <h1>Balance</h1>
+        <h3>Balance</h3>
         <h3 style={style}> $ {props.total.toFixed(2)} </h3>
       
     </Fragment>

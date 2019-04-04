@@ -48,7 +48,7 @@ class MainBudget extends Component {
   render() {
     return (
       <div className="container mt-4">
-        <h1>Budget Planner</h1>
+  
         <div className="row mt-3">
           <div className="col-md-7" style={{alignSelf: 'center'}}>
           <Add onAdd={this.add} data={this.state.data}/>
