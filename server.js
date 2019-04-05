@@ -34,6 +34,7 @@ app.use(passport.session());
 require('./routes/authRoutes')(app);
 require('./routes/categoryApiRoutes')(app);
 require('./routes/budgetApiRoutes')(app);
+require('./routes/calendarApiRoutes')(app);
 require('./routes/todoApiRoutes')(app);
 
 
