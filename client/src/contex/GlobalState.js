@@ -23,6 +23,9 @@ export class GlobalState extends Component {
     postCategory = async (values) => {
        await axios.post('/api/categories', values);
     };
+    postEvents = async (values) => {
+        await axios.post('/api/events', values);
+    }
 
   
   render() {
@@ -31,6 +34,7 @@ export class GlobalState extends Component {
         value={{
             getUser: this.getUser,
             postTodo: this.postTodo,
+            postEvents: this.postEvents,
             login: this.state.login,
             postCategory: this.postCategory
         }}

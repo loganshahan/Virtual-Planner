@@ -18,30 +18,11 @@ const styles = theme => ({
   },
 });
 
-const handleTimeStartChange = (e) => {
-    const value = e.target.value;
-    const FormatDate = moment(value).format('YYYY, MM, DD, HH, mm');
-    console.log(FormatDate)
-}
-const handleTimeEndChange = (e) => {
-    const value = e.target.value;
-    const FormatDate = moment(value).format('YYYY, MM, DD, HH, mm');
-    console.log(FormatDate)
-}
-const handleChange = (e) => {
-    console.log(e.target.value)
-}
-const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('test')
-}
-
 function DateAndTimePickers(props) {
-  const { title, desc, start, end } = props.calendar;
   console.log(props)
   return (
     <form className={props.classes.container} noValidate
-    onSubmit={handleSubmit}>
+    onSubmit={props.handleSubmit}>
       <TextField
         id="datetime-local"
         label='From'
@@ -51,7 +32,7 @@ function DateAndTimePickers(props) {
         InputLabelProps={{
           shrink: true,
         }}
-        onChange={handleTimeStartChange}
+        onChange={props.handleTimeStartChange}
       />
       <TextField
         id="datetime-local"
@@ -62,23 +43,24 @@ function DateAndTimePickers(props) {
         InputLabelProps={{
           shrink: true,
         }}
-        onChange={handleTimeEndChange}
+        onChange={props.handleTimeEndChange}
       />
       <TextField
           id="standard-title"
           label="Title"
           className={props.classes.textField}
-          value={title}
-          onChange={handleChange}
+          value=''
+          onChange={props.handleChange}
         />
         <TextField
           id="standard-desc"
           label="Desc"
           className={props.classes.textField}
-          value={desc}
-          onChange={handleChange}
+          value=''
+          onChange={props.handleChange}
         />
         <button 
+        className='custom_btn'
         type="submit" 
         label="submit"
         primary={true} >Submit</button>

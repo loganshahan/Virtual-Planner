@@ -2,22 +2,16 @@ import React, { Component } from 'react';
 import BigCalendar from 'react-big-calendar';
 import UserContext from '../../contex/user-context';
 import moment from 'moment';
-import CalenForm from './CalenForm';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import axios from 'axios'
 import data from './config'
+import SaveForm from './SaveForm';
 moment.locale('en-GB');
-
-
 
 class MainCalendar extends Component {
   static contextType = UserContext;
   
     state = {
-      title: '',
-      desc: '',
-      start: '',
-      end: '',
       cal_events: [],
       UserId: this.context.login.id
     }
@@ -47,7 +41,6 @@ class MainCalendar extends Component {
   })
  }
 render() {
-  console.log(this.props)
   const localizer = BigCalendar.momentLocalizer(moment);
   const cal_events = data
     return (
@@ -55,13 +48,13 @@ render() {
         <div style={{ height: 500 }}>
 
 
-      <CalenForm calendar={this.state} />
+      <SaveForm user={this.state.UserId} />
 
           <BigCalendar
             events={cal_events}
             localizer={localizer}
             step={30}
-            defaultView='week'
+            defaultView='month'
             views={['month','week','day']}
             defaultDate={new Date()}
             className="mt-4"

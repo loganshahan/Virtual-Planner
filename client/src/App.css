@@ -187,3 +187,37 @@ form {
 .budget_form .form-group:nth-child(2){
   margin-right: 0px !important;
 }
+
+/*CALENDAR*/
+
+.custom_btn {
+  background: var(--maroon);
+  border: 1px solid var(--indigo);
+  color: var(--pink);
+  cursor: pointer;
+  height: 35px;
+  vertical-align: middle;
+  justify-content: center;
+  align-self: flex-end;
+  
+}
+.custom_btn:hover {
+  background: var(--red);
+  border: 1px solid var(--maroon);
+  color: var(--pink);
+  cursor: pointer;
+  height: 35px;
+  vertical-align: middle;
+  justify-content: center;
+  align-self: flex-end;
+  
+}
+.rbc-show-more {
+  color: var(--black);
+}
+.rbc-show-more:hover {
+  color: var(--maroon) !important;
+}
+.rbc-event {
+  background-color: var(--indigo) !important;
+}
