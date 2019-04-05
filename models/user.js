@@ -9,7 +9,12 @@ module.exports = function(sequelize, DataTypes) {
      type:  DataTypes.STRING,
      allowNull: false,
     },
-    displayName: DataTypes.STRING
+    email: {
+     type:  DataTypes.STRING,
+     allowNull: true,
+    },
+    displayName: DataTypes.STRING,
+
     
   });
 
@@ -20,6 +25,9 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     User.hasMany(models.Todo, {
+      onDelete: "cascade"
+    });
+    User.hasMany(models.Txns, {
       onDelete: "cascade"
     });
   };

@@ -43,23 +43,34 @@ class MainBudget extends Component {
     amount = parseFloat(amount)
     const values = {description, amount , UserId}
     await axios.post('/api/transactions', values)
-  }
+  };
+
+  resetBud = async () => {
+    await axios.delete(`/api/transactions/${this.state.UserId}`)
+    window.location.reload();
+  };
 
   render() {
     return (
       <div className="container mt-4">
-        <div className="row">
+  
+        <div className="row mt-3">
           <div className="col-md-7" style={{alignSelf: 'center'}}>
           <Add onAdd={this.add} data={this.state.data}/>
           </div>
-          <div className="col-md-5">
+          <div className="col-md-5" style={{alignSelf: 'center'}}>
           <Balance total={this.state.total} />
+
+          <button 
+          onClick={this.resetBud}
+          className='custom_btn'>Reset</button>
+
           </div>
         </div>
           <TransactionList transactions={this.state.data} />
       </div>
     )
   }
-}
+};
 
 export default MainBudget

@@ -3,12 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^3.9.3",
     "axios": "^0.18.0",
     "http-proxy-middleware": "^0.19.1",
+    "material-ui": "^0.20.2",
+    "moment": "^2.24.0",
     "react": "^16.8.6",
+    "react-big-calendar": "^0.20.4",
     "react-dom": "^16.8.6",
+    "react-google-calendar-api": "^1.0.10",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "react_google_calendar": "^2.2.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -25,5 +31,8 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "proxy": "http://localhost:4000"
+  "proxy": "http://localhost:4000",
+  "devDependencies": {
+    "superagent": "^5.0.2"
+  }
 }

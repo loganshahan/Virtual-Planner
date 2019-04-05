@@ -22,8 +22,6 @@ passport.use( new GoogleStrategy({
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo",
     proxy: true
 }, async (accessToken, refreshToken, profile, done) => {
-    console.log('google id: ', profile.id);
-    console.log('google display name: ', profile.displayName);
     
         // HERE YOU GET THE EXISTING USER
     const existingUser = await db.User.findOne({where: {googleID: profile.id}}) 
@@ -37,8 +35,8 @@ passport.use( new GoogleStrategy({
     const saveUser =  await db.User.create({
         
                 googleID: profile.id,
-                displayName: profile.displayName 
-            
+                displayName: profile.displayName,
+                email: profile.emails[0].value            
         })
         done(null, saveUser)
         

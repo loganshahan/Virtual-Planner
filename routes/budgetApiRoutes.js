@@ -23,4 +23,15 @@ module.exports = function (app) {
           });
     });
 
+    //DELETE all  transactions by UserId
+    app.delete("/api/transactions/:id", function(req, res) {
+      db.Txns.destroy({
+        where: {
+          UserId: req.params.id
+        }
+      }).then(function(dbTxns) {
+        res.json(dbTxns);
+      });
+    });
+
 };
