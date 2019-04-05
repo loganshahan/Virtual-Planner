@@ -30,7 +30,7 @@ export class Nav extends Component {
     return (
         <nav className="navbar navbar-dark bg-dark fixed-top">
           <div className="container">
-            <Link className="navbar-brand" to="/">VH</Link>
+            <Link className="navbar-brand" to="/">VP</Link>
           <div className="custom_nav">
 
           {this.renderContent()}
