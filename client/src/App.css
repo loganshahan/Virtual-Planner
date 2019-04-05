@@ -191,14 +191,18 @@ form {
 /*CALENDAR*/
 
 .custom_btn {
-  background: var(--maroon);
+  background: transparent;
   border: 1px solid var(--indigo);
-  color: var(--pink);
+  color: var(--black);
+  transition: 0.3s all ease 0s;
   cursor: pointer;
   height: 35px;
   vertical-align: middle;
   justify-content: center;
   align-self: flex-end;
+  box-shadow: none;
+  border-radius: 2px;
+  width: 70px;
   
 }
 .custom_btn:hover {
@@ -220,4 +224,7 @@ form {
 }
 .rbc-event {
   background-color: var(--indigo) !important;
+}
+.rbc-day-slot .rbc-event {
+  display: block !important;
 }

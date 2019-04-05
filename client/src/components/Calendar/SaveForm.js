@@ -19,22 +19,21 @@ const styles = theme => ({
     },
   });
 
-
   class DateAndTimePickers extends Component {
 
     static contextType = UserContext;
 
     state = {
         title: '',
+        start: moment().format('ddd MMM DD YYYY HH:mm'),
+        end: moment().add(1, 'hours').format('ddd MMM DD YYYY HH:mm'),
+        UserId: this.context.login.id,
         desc: '',
-        start: moment().format('YYYY, MM, DD, HH, mm'),
-        end: moment().add(1, 'hours').format('YYYY, MM, DD, HH, mm'),
-        UserId: this.context.login.id
     };
 
      handleTimeStartChange = (e) => {
         const value = e.target.value;
-        const FormatStartDate = moment(value).format('YYYY, MM, DD, HH, mm');
+        const FormatStartDate = moment(value).format('ddd MMM DD YYYY HH:mm');
         this.setState({
             start: FormatStartDate
         })
@@ -42,7 +41,7 @@ const styles = theme => ({
 
      handleTimeEndChange = (e) => {
         const value = e.target.value;
-        const FormatEndDate = moment(value).format('YYYY, MM, DD, HH, mm');
+        const FormatEndDate = moment(value).format('ddd MMM DD YYYY HH:mm');
         this.setState({
             end: FormatEndDate
         })
@@ -63,10 +62,10 @@ const styles = theme => ({
             end: '',
             UserId: this.context.login.id
         })
+        window.location.reload()
     };
 
   render() {
-    console.log(this.props)
     return (
       <form className={this.props.classes.container} noValidate
       onSubmit={this.handleSubmit}>
