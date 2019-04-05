@@ -11,7 +11,6 @@ module.exports = function (app) {
 
     db.Todo.findAll({
       where: query,
-      // include: [db.User]
       include: [{
         model: db.User,
         as: 'uid'
@@ -31,7 +30,6 @@ module.exports = function (app) {
       where: {
         id: req.params.id
       },
-      // include: [db.User] 
       include: [{
         model: db.User,
         as: 'uid'
