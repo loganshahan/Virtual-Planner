@@ -11,24 +11,19 @@ module.exports = function(sequelize, DataTypes) {
       }
     });
     Category.associate = function(models) {
-        // We're saying that a todo should belong to a User
-        // A category can't be created without a User due to the foreign key constraint
-        // Category.belongsTo(models.User, {
-        //   foreignKey: {
-        //     allowNull: false
-        //   }
-        // });
+        Category.belongsTo(models.User, {
+          foreignKey: {
+            allowNull: false
+          }
+        });
 
-        // Category.belongsTo(models.Todo, {
-        //   foreignKey: {
-        //     allowNull: false
-        //   }
-        // });
-        
-
-        Category.hasOne(models.Todo, {
+        Category.hasMany(models.Todo, {
           onDelete: "cascade"
         });
+        
+        // Category.hasOne(models.Todo, {
+        //   onDelete: "cascade"
+        // });
       };
     return Category;
   };
