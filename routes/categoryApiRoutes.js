@@ -17,11 +17,11 @@ module.exports = function (app) {
       });
     });
   
-    // GET one Category by categoryId
+    // GET one Category by id
     app.get("/api/categories/:id", function(req, res) {
       db.Category.findOne({
         where: {
-          categoryId: req.params.id
+          id: req.params.id
         },
         include: [db.User]
       }).then(function(dbCategory) {
@@ -36,11 +36,11 @@ module.exports = function (app) {
       });
     });
   
-    // DELETE a Category by categoryId
+    // DELETE a Category by id
     app.delete("/api/categories/:id", function(req, res) {
       db.Category.destroy({
         where: {
-          categoryId: req.params.id
+          id: req.params.id
         }
       }).then(function(dbCategory) {
         res.json(dbCategory);
@@ -53,7 +53,7 @@ module.exports = function (app) {
         req.body,
         {
           where: {
-            categoryId: req.body.id
+            id: req.body.id
           }
         }).then(function(dbCategory) {
         res.json(dbCategory);
