@@ -9,10 +9,6 @@ module.exports = function(sequelize, DataTypes) {
             type:  DataTypes.STRING,
             allowNull: false,
            },
-        desc: {
-            type:  DataTypes.STRING,
-            allowNull: true,
-        },
         start: {
             type:  DataTypes.STRING,
             allowNull: false,
@@ -20,6 +16,10 @@ module.exports = function(sequelize, DataTypes) {
         end: {
             type:  DataTypes.STRING,
             allowNull: false,
+        },
+        desc: {
+            type:  DataTypes.STRING,
+            allowNull: true,
         }
     
     });

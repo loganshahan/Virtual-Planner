@@ -7,7 +7,6 @@ export class Nav extends Component {
   static contextType = UserContext;
 
   renderContent() {
-    console.log(this.context)
     switch(this.context.login.id) {
       case undefined:
       return(
