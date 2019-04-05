@@ -17,17 +17,13 @@ module.exports = function (sequelize, DataTypes) {
   Todo.associate = function (models) {
 
     Todo.belongsTo(models.Category, {
-      as: "cid",
       foreignKey: {
-        name: "id",
         allowNull: false
       }
     });
 
     Todo.belongsTo(models.User, {
-      as: "uid",
       foreignKey: {
-        name: "id",
         allowNull: false
       }
     });

@@ -12,12 +12,10 @@ module.exports = function (app) {
     db.Todo.findAll({
       where: query,
       include: [{
-        model: db.User,
-        as: 'uid'
+        model: db.User
       },
       {
-        model: db.Category,
-        as: 'cid'
+        model: db.Category
       }]
     }).then(function (dbTodo) {
       res.json(dbTodo);
@@ -31,12 +29,10 @@ module.exports = function (app) {
         id: req.params.id
       },
       include: [{
-        model: db.User,
-        as: 'uid'
+        model: db.User
       },
       {
-        model: db.Category,
-        as: 'cid'
+        model: db.Category
       }]
     }).then(function (dbTodo) {
       res.json(dbTodo);
