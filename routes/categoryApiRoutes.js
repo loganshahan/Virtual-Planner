@@ -36,11 +36,21 @@ module.exports = function (app) {
       });
     });
   
-    // DELETE a Category by id
+    // DELETE a single Category by id
+    app.delete("/api/categories/single/:categoryid", function(req, res) {
+      db.Category.destroy({
+        where: {
+          id: req.params.categoryid
+        }
+      }).then(function(dbCategory) {
+        res.json(dbCategory);
+      });
+    });
+    // DELETE all Categories by UserId
     app.delete("/api/categories/:id", function(req, res) {
       db.Category.destroy({
         where: {
-          id: req.params.id
+          UserId: req.params.id
         }
       }).then(function(dbCategory) {
         res.json(dbCategory);
