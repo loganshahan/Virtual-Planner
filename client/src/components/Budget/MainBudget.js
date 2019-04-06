@@ -47,8 +47,10 @@ class MainBudget extends Component {
   };
 
   resetBud = async () => {
-    await axios.delete(`/api/transactions/${this.state.UserId}`)
-    window.location.reload();
+    if( window.confirm("Are you sure? ")) {
+      await axios.delete(`/api/transactions/${this.state.UserId}`)
+      window.location.reload();
+    }
   };
 
   render() {

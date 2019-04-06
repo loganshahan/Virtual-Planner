@@ -23,11 +23,10 @@ module.exports = function (app) {
           });
     });
 
-    // DELETE a single Event by id
-    app.delete("/api/events/single/:eventid", function(req, res) {
+    app.delete("/api/events/single/:event", function(req, res) {
       db.Calendr.destroy({
         where: {
-          id: req.params.eventid
+          id: req.params.event
         }
       }).then(function(dbCalendr) {
         res.json(dbCalendr);
