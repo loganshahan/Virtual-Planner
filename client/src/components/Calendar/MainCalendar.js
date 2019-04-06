@@ -31,8 +31,9 @@ class MainCalendar extends Component {
           const start = new Date(data.start)
           const end = new Date(data.end)
           const desc = data.desc;
+          const calenId = data.id
 
-          const obj = {title, start, end, desc};
+          const obj = {title, start, end, desc, calenId};
           dataSet.push(obj);
           this.setState({
             cal_events: dataSet,

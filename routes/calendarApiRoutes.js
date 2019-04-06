@@ -23,4 +23,14 @@ module.exports = function (app) {
           });
     });
 
+    app.delete("/api/events/single/:event", function(req, res) {
+      db.Calendr.destroy({
+        where: {
+          id: req.params.event
+        }
+      }).then(function(dbCalendr) {
+        res.json(dbCalendr);
+      });
+    });
+
 }
