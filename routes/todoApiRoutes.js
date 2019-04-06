@@ -13,9 +13,6 @@ module.exports = function (app) {
       where: query,
       include: [{
         model: db.User
-      },
-      {
-        model: db.Category
       }]
     }).then(function (dbTodo) {
       res.json(dbTodo);
@@ -30,9 +27,6 @@ module.exports = function (app) {
       },
       include: [{
         model: db.User
-      },
-      {
-        model: db.Category
       }]
     }).then(function (dbTodo) {
       res.json(dbTodo);
