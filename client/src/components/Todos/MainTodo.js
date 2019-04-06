@@ -12,7 +12,6 @@ export class MainTodo extends Component {
     };
 
     handleSubmit = (e) => {
-        e.preventDefault();
         this.context.postTodo(this.state);
         this.context.postCategory(this.state);
         this.setState({
