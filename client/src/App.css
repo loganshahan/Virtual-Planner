@@ -122,9 +122,12 @@ form {
   border-radius: 5px;
 }
 .custom_nav a {
-  margin: 0 15px;
+  margin: 10px;
 }
-
+.navbar-expand-lg .navbar-collapse {
+  justify-content: flex-end;
+  margin: 0 5%;
+}
 /*Modal*/
 
 .modal {
