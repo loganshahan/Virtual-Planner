@@ -12,15 +12,23 @@ module.exports = function (sequelize, DataTypes) {
     body: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    isComplete: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
   });
   Todo.associate = function (models) {
 
-    Todo.belongsTo(models.Category, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
+    // Todo.belongsTo(models.Category, {
+    //   foreignKey: {
+    //     allowNull: false
+    //   }
+    // });
 
     Todo.belongsTo(models.User, {
       foreignKey: {

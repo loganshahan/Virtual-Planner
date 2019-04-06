@@ -32,5 +32,16 @@ module.exports = function (app) {
         res.json(dbCalendr);
       });
     });
+    // DELETE all Events by UserId
+    app.delete("/api/events/:id", function(req, res) {
+      db.Calendr.destroy({
+        where: {
+          UserId: req.params.id
+        }
+      }).then(function(dbCalendr) {
+        res.json(dbCalendr);
+      });
+    });
+  
 
 }
