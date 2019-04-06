@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles, withTheme } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import Modal from '@material-ui/core/Modal';
+import moment from 'moment'
+import axios from 'axios';
 // import Button from '@material-ui/core/Button';
 
 function rand() {
@@ -29,6 +32,10 @@ const styles = theme => ({
     padding: theme.spacing.unit * 4,
     outline: 'none',
   },
+  button: {
+    margin: theme.spacing.unit,
+    color: 'white !important'
+  },
 });
 
 class SimpleModal extends React.Component {
@@ -45,10 +52,15 @@ class SimpleModal extends React.Component {
   handleClose = () => {
     this.setState({ open: false });
   };
+  handleDelete = async () => {
+    await axios.delete(`/api/events/single/${this.props.info.calenId}`);
+    window.location.reload();
+  }
 
   render() {
     const {classes} = this.props;
-    const {title, desc} = this.props.info;
+    console.log(this.props.info.start)
+    const {title, desc, start} = this.props.info;
 
     return (
       <div>
@@ -65,6 +77,20 @@ class SimpleModal extends React.Component {
             <Typography variant="subtitle1" id="simple-modal-description">
               {desc}
             </Typography>  
+            <Typography variant="subtitle1" id="">
+             From: { moment(this.props.info.start).format('LLLL')}
+            </Typography>  
+            <Typography variant="subtitle1" id="">
+             To: { moment(this.props.info.end).format('LLLL')}
+            </Typography>  
+            <Button 
+            variant="contained" 
+            color="secondary" 
+            className={classes.button}
+            onClick={this.handleDelete}
+            >
+              Delete Event
+            </Button>
           </div>
         </Modal>
       </div>
