@@ -23,4 +23,26 @@ module.exports = function (app) {
           });
     });
 
+    // DELETE a single Event by id
+    app.delete("/api/events/single/:eventid", function(req, res) {
+      db.Calendr.destroy({
+        where: {
+          id: req.params.eventid
+        }
+      }).then(function(dbCalendr) {
+        res.json(dbCalendr);
+      });
+    });
+    // DELETE all Events by UserId
+    app.delete("/api/events/:id", function(req, res) {
+      db.Calendr.destroy({
+        where: {
+          UserId: req.params.id
+        }
+      }).then(function(dbCalendr) {
+        res.json(dbCalendr);
+      });
+    });
+  
+
 }
