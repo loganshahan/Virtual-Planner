@@ -12,6 +12,14 @@ module.exports = function (sequelize, DataTypes) {
     body: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    category: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    isComplete: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false
     }
   });
   Todo.associate = function (models) {
