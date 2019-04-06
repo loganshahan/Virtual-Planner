@@ -24,7 +24,8 @@ class MainBudget extends Component {
         if(data.UserId === this.state.UserId) {
           let amount = parseFloat(data.amount);
           let description = data.description
-          let obj = {amount, description};
+          let amtId = data.id
+          let obj = {amount, description, amtId};
           dataSet.push(obj);
             this.setState({
               data: dataSet,
@@ -67,7 +68,7 @@ class MainBudget extends Component {
 
           </div>
         </div>
-          <TransactionList transactions={this.state.data} />
+          <TransactionList transactions={this.state.data}/>
       </div>
     )
   }
