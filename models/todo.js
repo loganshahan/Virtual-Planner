@@ -24,11 +24,11 @@ module.exports = function (sequelize, DataTypes) {
   });
   Todo.associate = function (models) {
 
-    Todo.belongsTo(models.Category, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
+    // Todo.belongsTo(models.Category, {
+    //   foreignKey: {
+    //     allowNull: false
+    //   }
+    // });
 
     Todo.belongsTo(models.User, {
       foreignKey: {
