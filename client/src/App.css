@@ -190,7 +190,19 @@ form {
 .budget_form .form-group:nth-child(2){
   margin-right: 0px !important;
 }
-
+.custom_delete {
+  float: right;
+  margin: 0;
+    background: none;
+    border: none;
+    color: var(--red);
+    cursor: pointer;background: none;
+    border: none;
+    color: var(--indigo);
+    cursor: pointer;
+    font-family: var(--mainPara);
+    font-weight: bold;
+}
 /*CALENDAR*/
 
 .custom_btn {

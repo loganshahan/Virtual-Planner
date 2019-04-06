@@ -34,4 +34,14 @@ module.exports = function (app) {
       });
     });
 
+    app.delete("/api/transactions/single/:budgetid", function(req, res) {
+      db.Txns.destroy({
+        where: {
+          id: req.params.budgetid
+        }
+      }).then(function(dbTxns) {
+        res.json(dbTxns);
+      });
+    });
+
 };
