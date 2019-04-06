@@ -15,7 +15,7 @@ function TransactionList(props) {
 
   } else {
     return transactions.map((transaction, inx) => (
-      <TransactionListEntry transaction={transaction} key={inx} />
+      <TransactionListEntry transaction={transaction} key={inx}/>
   ))
   }
 };

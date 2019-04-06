@@ -122,9 +122,12 @@ form {
   border-radius: 5px;
 }
 .custom_nav a {
-  margin: 0 15px;
+  margin: 10px;
 }
-
+.navbar-expand-lg .navbar-collapse {
+  justify-content: flex-end;
+  margin: 0 5%;
+}
 /*Modal*/
 
 .modal {
@@ -186,4 +189,57 @@ form {
 }
 .budget_form .form-group:nth-child(2){
   margin-right: 0px !important;
+}
+.custom_delete {
+  float: right;
+  margin: 0;
+    background: none;
+    border: none;
+    color: var(--red);
+    cursor: pointer;background: none;
+    border: none;
+    color: var(--indigo);
+    cursor: pointer;
+    font-family: var(--mainPara);
+    font-weight: bold;
+}
+/*CALENDAR*/
+
+.custom_btn {
+  background: transparent;
+  border: 1px solid var(--indigo);
+  color: var(--black);
+  transition: 0.3s all ease 0s;
+  cursor: pointer;
+  height: 35px;
+  vertical-align: middle;
+  justify-content: center;
+  align-self: flex-end;
+  box-shadow: none;
+  border-radius: 2px;
+  width: 70px;
+  
+}
+.custom_btn:hover {
+  background: var(--red);
+  border: 1px solid var(--maroon);
+  color: var(--pink);
+  cursor: pointer;
+  height: 35px;
+  vertical-align: middle;
+  justify-content: center;
+  align-self: flex-end;
+  
+}
+.rbc-show-more {
+  color: var(--black);
+}
+.rbc-show-more:hover {
+  color: var(--maroon) !important;
+}
+.rbc-event {
+  background-color: var(--indigo) !important;
+}
+.rbc-day-slot .rbc-event {
+  display: block !important;
 }

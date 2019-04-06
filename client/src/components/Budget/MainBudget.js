@@ -24,7 +24,8 @@ class MainBudget extends Component {
         if(data.UserId === this.state.UserId) {
           let amount = parseFloat(data.amount);
           let description = data.description
-          let obj = {amount, description};
+          let amtId = data.id
+          let obj = {amount, description, amtId};
           dataSet.push(obj);
             this.setState({
               data: dataSet,
@@ -43,7 +44,12 @@ class MainBudget extends Component {
     amount = parseFloat(amount)
     const values = {description, amount , UserId}
     await axios.post('/api/transactions', values)
-  }
+  };
+
+  resetBud = async () => {
+    await axios.delete(`/api/transactions/${this.state.UserId}`)
+    window.location.reload();
+  };
 
   render() {
     return (
@@ -55,12 +61,17 @@ class MainBudget extends Component {
           </div>
           <div className="col-md-5" style={{alignSelf: 'center'}}>
           <Balance total={this.state.total} />
+
+          <button 
+          onClick={this.resetBud}
+          className='custom_btn'>Reset</button>
+
           </div>
         </div>
-          <TransactionList transactions={this.state.data} />
+          <TransactionList transactions={this.state.data}/>
       </div>
     )
   }
-}
+};
 
 export default MainBudget
