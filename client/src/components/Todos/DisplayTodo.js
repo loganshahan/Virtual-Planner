@@ -19,6 +19,18 @@ function DisplayTodo(props) {
 
 
     }
+
+    const handleMarkComplete = (e) => {
+        let id = e.currentTarget.getAttribute('id');
+        let todoId = {
+            id: id,
+            isComplete: 'True   '
+        }
+
+        axios.put('/api/todos', {params: todoId}).then(response => {
+            console.log(response);
+        });
+    }
     const renderTodos = () => {
         return todos.map( (todo, index) => {
             const {id, title, body, category} = todo;
@@ -29,10 +41,15 @@ function DisplayTodo(props) {
                 <a href="#" className="list-group-item list-group-item-action flex-column align-items-start">
                     <div className="d-flex w-100 justify-content-between">
                         <h5 className="mb-1"> {title} </h5>
-                        <button id={id} onClick={handleDelete}>Remove</button>
                     </div>
-                        <p className="mb-1"> {body} </p>
-                        <small> {category} </small>
+                    <p className="mb-1"> {body} </p>
+                    <small> {category} </small>
+                    <div>
+                        <button id={id} onClick={handleMarkComplete} className="btn btn-primary mark-complete">Mark Complete</button>
+                    </div>
+                    <div>
+                        <button id={id} onClick={handleDelete} className="btn btn-danger">Remove</button>
+                    </div>
                 </a>
                 
         </div>

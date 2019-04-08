@@ -219,6 +219,15 @@ form {
 .custom_title {
   margin: 10px 0;
 }
+
+/* TO DOS */
+.mark-complete {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+
+
 /*CALENDAR*/
 
 .custom_btn {
