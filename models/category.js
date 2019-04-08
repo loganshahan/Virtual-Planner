@@ -17,9 +17,9 @@ module.exports = function (sequelize, DataTypes) {
       }
     });
 
-    Category.hasMany(models.Todo, {
-      onDelete: "cascade"
-    });
+    // Category.hasMany(models.Todo, {
+    //   onDelete: "cascade"
+    // });
   };
   return Category;
 };
