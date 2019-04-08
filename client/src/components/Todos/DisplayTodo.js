@@ -22,14 +22,12 @@ function DisplayTodo(props) {
 
     const handleMarkComplete = (e) => {
         let id = e.currentTarget.getAttribute('id');
-        let todoId = {
-            id: id,
-            isComplete: 'True   '
-        }
 
-        axios.put('/api/todos', {params: todoId}).then(response => {
+        axios.put(`/api/todos/${id}`, {isComplete: 1}).then(response => {
             console.log(response);
         });
+
+        window.location.reload();
     }
     const renderTodos = () => {
         return todos.map( (todo, index) => {
@@ -39,6 +37,7 @@ function DisplayTodo(props) {
         <div className="list-group" key={index}>
 
                 <a href="#" className="list-group-item list-group-item-action flex-column align-items-start">
+
                     <div className="d-flex w-100 justify-content-between">
                         <h5 className="mb-1"> {title} </h5>
                     </div>
