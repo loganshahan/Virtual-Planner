@@ -19,7 +19,7 @@ class MainCalendar extends Component {
       open: false
     }
 
-  componentDidMount() { 
+  getEvents = () => {
     axios.get('/api/events').then(response => {
       let events = response.data;
 
@@ -41,6 +41,10 @@ class MainCalendar extends Component {
         }
       });
     });
+  }
+
+  componentDidMount() { 
+    this.getEvents()
  };
 
  handleModal = (e) => {
@@ -53,7 +57,10 @@ render() {
     return (
 
         <div style={{ height: 500 }}>
-      <SaveForm user={this.state.UserId} />
+      <SaveForm 
+      user={this.state.UserId}
+      renderEvents={this.getEvents}
+       />
 
           <BigCalendar
             events={cal_events}
@@ -65,7 +72,10 @@ render() {
             className="mt-4"
             onSelectEvent={this.handleModal}
           />
-          <ShowEvent open={this.state.open} info={this.state.info}/>
+          <ShowEvent 
+          open={this.state.open} 
+          info={this.state.info} 
+          />
         </div>
     );
   };

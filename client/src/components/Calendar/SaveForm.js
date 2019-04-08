@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import UserContext from '../../contex/user-context';
 import moment from 'moment';
 
+
 const styles = theme => ({
     container: {
       display: 'flex',
@@ -27,15 +28,18 @@ const styles = theme => ({
         title: '',
         start: moment().format('ddd MMM DD YYYY HH:mm'),
         end: moment().add(1, 'hours').format('ddd MMM DD YYYY HH:mm'),
+        startDate: new Date(),
         UserId: this.context.login.id,
         desc: '',
     };
 
      handleTimeStartChange = (e) => {
         const value = e.target.value;
+        console.log(value)
         const FormatStartDate = moment(value).format('ddd MMM DD YYYY HH:mm');
         this.setState({
-            start: FormatStartDate
+            start: FormatStartDate,
+            startDate: new Date(moment(value).format('YYYY-MMM-DD HH:mm:ss')),
         })
     };
 
@@ -49,7 +53,6 @@ const styles = theme => ({
 
      handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
-
     };
 
      handleSubmit = (e) => {
