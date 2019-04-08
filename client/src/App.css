@@ -268,3 +268,9 @@ form {
 .rbc-day-slot .rbc-event {
   display: block !important;
 }
+
+/* Dashboard */
+
+.Recent_Title span{
+  font-size: 1.5rem !important;
+}

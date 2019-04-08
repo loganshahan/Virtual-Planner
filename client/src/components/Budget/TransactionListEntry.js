@@ -20,7 +20,7 @@ function TransactionListEntry(props) {
 
   return (
     <div className="row custom_table" style={{alignItems: 'center'}}>
-        <div className="col-md-3 custom_border">
+        <div className="col-md-4 custom_border">
           {
             moment(transaction.createdDate).format('LLLL')
           }
@@ -28,7 +28,7 @@ function TransactionListEntry(props) {
         <div className="col-md-4 custom_border">
             <h5>{transaction.description}</h5>
         </div>
-        <div className="col-md-5">
+        <div className="col-md-4">
           <h5 style={style}> {transaction.amount}
           </h5>
           <input 
