@@ -208,6 +208,17 @@ form {
     font-family: var(--mainPara);
     font-weight: bold;
 }
+.form-inline {
+  justify-content: space-between;
+}
+@media all and (max-width: 768px) {
+  .custom_title {
+    display: none;
+  }
+}
+.custom_title {
+  margin: 10px 0;
+}
 /*CALENDAR*/
 
 .custom_btn {
