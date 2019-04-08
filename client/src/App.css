@@ -13,7 +13,7 @@
   --indigo: rgba(34, 56, 67, 1);
   --red: rgba(61, 8, 20, 1);
   --maroon: rgba(165, 56, 96, 1);
-  --black: rgba(51, 51, 51, 1)
+  --black: rgba(51, 51, 51, 1);
   
 }
 
@@ -48,7 +48,12 @@ h1, h2, h3, h4, h5 {
 }
 p, span {
   font-family: var(--mainPara) !important;
-  color: var(--black)
+}
+
+button > span {
+  /* background: var(--pink); */
+  color: red !important;
+
 }
 
 @keyframes App-logo-spin {

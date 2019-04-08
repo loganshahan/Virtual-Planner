@@ -23,6 +23,7 @@ function getModalStyle() {
   };
 }
 
+
 const styles = theme => ({
   paper: {
     position: 'absolute',
@@ -33,12 +34,11 @@ const styles = theme => ({
     outline: 'none',
   },
   button: {
-    margin: theme.spacing.unit,
-    color: 'white !important'
+    margin: 0,
   },
 });
 
-class SimpleModal extends React.Component {
+class SimpleModal extends React.PureComponent {
   state = {
     open: false,
   };
@@ -47,8 +47,8 @@ class SimpleModal extends React.Component {
       this.setState({
           open: nextProps.open
       })
-  };
 
+  };
   handleClose = () => {
     this.setState({ open: false });
   };
@@ -60,7 +60,7 @@ class SimpleModal extends React.Component {
   render() {
     const {classes} = this.props;
     console.log(this.props.info.start)
-    const {title, desc, start} = this.props.info;
+    const {title, desc} = this.props.info;
 
     return (
       <div>
@@ -84,8 +84,6 @@ class SimpleModal extends React.Component {
              To: { moment(this.props.info.end).format('LLLL')}
             </Typography>  
             <Button 
-            variant="contained" 
-            color="secondary" 
             className={classes.button}
             onClick={this.handleDelete}
             >
