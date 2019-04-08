@@ -9,8 +9,8 @@ function TransactionList(props) {
 
     if(transactions.length === 0) {
        return(
-        <div>
-          <h2>No transactions yet</h2>
+        <div className='custom_no'>
+          <h5>No transactions yet</h5>
         </div>
       )
 

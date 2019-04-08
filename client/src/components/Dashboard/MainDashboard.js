@@ -27,7 +27,7 @@ class MainDashboard extends Component {
           }
         })
       });
-    }
+    };
 
   render() {
 

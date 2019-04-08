@@ -3,11 +3,18 @@ import SingleEvent from './singleEvent';
 
   const RenderRecent = (props) => {
       const {events} = props;
-
-      return events.map((event, inx) => (
-        <SingleEvent event={event} key={inx}/>
-    ))
-  }
+      if(events.length === 0) {
+        return(
+          <div className='custom_no'>
+            <h5>You don't have any events in your calendar</h5>
+          </div>
+        )
+      } else {
+        return events.map((event, inx) => (
+          <SingleEvent event={event} key={inx}/>
+      ))
+      }
+  };
 
 
   function RecentEvents(props) {
