@@ -11,6 +11,7 @@ module.exports = function (app) {
     
         db.Txns.findAll({
           where: query,
+          order: [['updatedAt', 'DESC']],
           include: [db.User]
         }).then(function(dbTxns) {
           res.json(dbTxns);

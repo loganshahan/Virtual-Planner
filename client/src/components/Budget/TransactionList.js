@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import TransactionListEntry from './TransactionListEntry';
+import BudTitle from './BudTitle';
 
 function TransactionList(props) {
 
@@ -22,8 +23,8 @@ function TransactionList(props) {
 
   return (
     <Fragment>
-        <div className="container mt-5">
-        <h1>Transactions</h1>
+        <div className="container mt-5 mb-5">
+        <BudTitle />
             {renderTran()}
         </div>
     </Fragment>

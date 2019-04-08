@@ -1,11 +1,27 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react';
+import UserContext from '../contex/user-context';
+import MainDashboard from './Dashboard/MainDashboard'
+
 
 export class Home extends Component {
+
+  static contextType = UserContext;
+
+  state = {
+    UserId: this.context.login.id
+  }
+
+
   render() {
+
     return (
-      <div className="mt-4">
-          <h1>Dashboard</h1>
-      </div>
+      <Fragment>
+        
+         <MainDashboard
+         user={this.state.UserId}
+          />
+
+      </Fragment>
     )
   }
 };

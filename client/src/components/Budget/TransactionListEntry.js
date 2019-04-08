@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from 'axios';
+import moment from 'moment';
 
 
 function TransactionListEntry(props) {
     const {transaction} = props
-    console.log(transaction.amtId)
+    console.log(transaction)
 
     const style = {
         color: transaction.amount > 0 ? 'green' : 'red',
@@ -19,21 +20,25 @@ function TransactionListEntry(props) {
 
   return (
     <div className="row custom_table" style={{alignItems: 'center'}}>
-        <div className="col-md-6 custom_border">
-            <h5>{transaction.description}:</h5>
+        <div className="col-md-3 custom_border">
+          {
+            moment(transaction.createdDate).format('LLLL')
+          }
         </div>
-        <div className="col-md-6">
+        <div className="col-md-4 custom_border">
+            <h5>{transaction.description}</h5>
+        </div>
+        <div className="col-md-5">
           <h5 style={style}> {transaction.amount}
-
+          </h5>
           <input 
           type='button' 
           id={transaction.amtId}
           className='custom_delete' 
           value='X' 
           onClick={handleDestroy}
+          style={{position: 'absolute', top: 0, right: 0}}
           />
-
-          </h5>
         </div>
     </div>
   )

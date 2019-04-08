@@ -23,9 +23,11 @@ class MainBudget extends Component {
         // looks for the information of the right user who is loged in
         if(data.UserId === this.state.UserId) {
           let amount = parseFloat(data.amount);
-          let description = data.description
-          let amtId = data.id
-          let obj = {amount, description, amtId};
+          let description = data.description;
+          let amtId = data.id;
+          let createdDate = data.createdAt;
+          let obj = {amount, description, amtId, createdDate};
+          console.log(obj)
           dataSet.push(obj);
             this.setState({
               data: dataSet,
