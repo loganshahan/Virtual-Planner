@@ -15,24 +15,7 @@ module.exports = function (app) {
     }).then(function (dbCalendr) {
       res.json(dbCalendr);
     });
-  });
 
-  app.get("/api/events/recent", function (req, res) {
-    console.log(req.body)
-    let query = {};
-    if (req.query.id) {
-      query.id = req.query.id;
-      query.startDate = {[Op.gte]: req.query.startDate};
-    }
-
-    db.Calendr.findAll({
-      where: query,
-      order: [['start', 'ASC']],
-      limit: 3,
-      include: [db.User]
-    }).then(function (dbCalendr) {
-      res.json(dbCalendr);
-    });
   });
 
   app.post("/api/events", function (req, res) {
@@ -61,6 +44,28 @@ module.exports = function (app) {
       res.json(dbCalendr);
     });
   });
+
+    /* DASHBOARD */
+    // Get the most recent Dates from calendar
+    app.get("/api/events/recent/:id", function (req, res) {
+      let query = {};
+      if (req.query.id) {
+        query.id = req.query.id;
+        query.startDate = {[Op.gte]: req.query.startDate};
+      }
+  
+      db.Calendr.findAll({
+        where: {
+          UserId: req.params.id
+        },
+        order: [['startDate', 'ASC']],
+        limit: 4,
+        include: [db.User]
+      }).then(function (dbCalendr) {
+        res.json(dbCalendr);
+      });
+      
+    });
 
 
 }
