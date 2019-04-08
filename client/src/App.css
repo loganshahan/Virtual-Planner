@@ -274,3 +274,8 @@ form {
 .Recent_Title span{
   font-size: 1.5rem !important;
 }
+.custom_no > h5 {
+  background: var(--red);
+  color: var(--pink) !important;
+  padding: 25px;
+}
