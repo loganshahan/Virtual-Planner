@@ -41,10 +41,10 @@ module.exports = function (app) {
   });
 
   // DELETE a single todo by id
-  app.delete("/api/todos/single/:todoid", function (req, res) {
+  app.delete("/api/todos/single/:id", function (req, res) {
     db.Todo.destroy({
       where: {
-        id: req.params.todoid
+        id: req.params.id
       }
     }).then(function (dbTodo) {
       res.json(dbTodo);
@@ -62,12 +62,12 @@ module.exports = function (app) {
   });
 
   // PUT route to update a todo
-  app.put("/api/todos", function (req, res) {
+  app.put("/api/todos/:id", function (req, res) {
     db.Todo.update(
       req.body,
       {
         where: {
-          id: req.body.id
+          id: req.params.id
         }
       }).then(function (dbTodo) {
         res.json(dbTodo);
