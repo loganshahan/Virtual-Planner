@@ -10,7 +10,7 @@ React, Node, MySQL, Material UI, Google Oauth.
 
 Ansar: Front-End\
 Nolan: Back-End\
-Logan: Back-End
+Logan: Back-End\
 Julian: Tech-Lead
 
 # Deployed Application link:
