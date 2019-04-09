@@ -108,7 +108,7 @@ form {
 
 .full-height{
   background: rgba(255, 242, 234, 1);
-  height: 92vh;
+  /* height: 92vh; */
   color: var(--red);;
 }
 
@@ -226,6 +226,10 @@ form {
   margin-bottom: 10px;
 }
 
+.features {
+  margin-top: 20px;
+  
+}
 
 
 /*CALENDAR*/
