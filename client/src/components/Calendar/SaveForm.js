@@ -102,15 +102,17 @@ const styles = theme => ({
             className={this.props.classes.textField}
             value={this.state.title}
             onChange={this.handleChange}
+            autoComplete='off'
           />
           <TextField
             id="standard-desc"
-            label="Desc"
+            label="Description"
             name='desc'
             type='text'
             className={this.props.classes.textField}
             value={this.state.desc}
             onChange={this.handleChange}
+            autoComplete='off'
           />
           <button 
           className='custom_btn'

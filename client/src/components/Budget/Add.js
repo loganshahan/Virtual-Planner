@@ -1,12 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import FilledInput from '@material-ui/core/FilledInput';
 import FormControl from '@material-ui/core/FormControl';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import Input from '@material-ui/core/Input';
-import InputLabel from '@material-ui/core/InputLabel';
-import OutlinedInput from '@material-ui/core/OutlinedInput';
 
 const styles = theme => ({
   container: {
@@ -22,28 +18,46 @@ class Add extends Component {
 
     state = {
         description: '',
-        amount: ''
+        amount: '',
+
+        formErrors: {
+          description: "",
+          amount: ""
+        },
     }
 
-    handleChangeDesc = (e) => {
-        this.setState({
-            description: e.target.value
-        });
-    };
+    handleChange = (e) => {
+      const { name, value } = e.target;
+      let formErrors = { ...this.state.formErrors };
 
-    handleChangeAmt = (e) => {
-        this.setState({
-            amount: e.target.value
-        });
+      switch (name) {
+        case 'description':
+          formErrors.description = 
+            value === '' ? 'Please add a value'
+            : (!isNaN(value)) ? 'Please add a description'
+            : ''
+          break;
+        case 'amount':
+          formErrors.amount = 
+            value === '' ? 'Please add a value'
+            : (isNaN(value)) ? 'Please add only numbers'
+            : ''
+          break;
+  
+        default:
+          break;
+      };
+      this.setState({ [e.target.name]: e.target.value });
+      this.setState({ formErrors, [name]: value });
     };
 
     add = () => {
         this.props.onAdd(this.state.description, this.state.amount);
-        window.location.reload(); 
     };
 
   render() {
     const { classes } = this.props;
+    const { formErrors } = this.state;
 
     return (
       
@@ -55,18 +69,27 @@ class Add extends Component {
         <FormControl className={classes.formControl}>
           <Input 
           id="desc" 
+          name='description'
           value={this.state.description} 
-          onChange={this.handleChangeDesc}
+          onChange={this.handleChange}
           placeholder='Description'
+          autoComplete='off'
            />
+           { formErrors.description.length > 0 && (
+          <span className="errorMessage">{formErrors.description}</span> )}
+
         </FormControl>
         <FormControl className={classes.formControl}>
           <Input 
           id="amt" 
+          name='amount'
           value={this.state.amount} 
-          onChange={this.handleChangeAmt}
+          onChange={this.handleChange}
           placeholder='Amount'
+          autoComplete='off'
            />
+           { formErrors.amount.length > 0 && (
+          <span className="errorMessage">{formErrors.amount}</span> )}
         </FormControl>
 
         <button 
@@ -79,8 +102,8 @@ class Add extends Component {
 </Fragment>
 
     )
-  }
-}
+  };
+};
 
 Add.propTypes = {
   classes: PropTypes.object.isRequired,

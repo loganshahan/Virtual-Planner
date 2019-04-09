@@ -24,8 +24,8 @@ export class YourBudget extends Component {
 							'green'
 							],
 							hoverBackgroundColor: [
-							'red',
-							'green'
+							'rgba(255, 242, 234, 1)',
+							'rgba(255, 242, 234, 1)'
 							]
 							
 					}],
