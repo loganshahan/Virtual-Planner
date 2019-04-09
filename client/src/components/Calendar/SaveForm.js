@@ -2,8 +2,10 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import FormControl from '@material-ui/core/FormControl';
 import UserContext from '../../contex/user-context';
 import moment from 'moment';
+import {calendarSucess} from '../Assets/Sucess';
 
 
 const styles = theme => ({
@@ -17,7 +19,7 @@ const styles = theme => ({
     },
     dense: {
       marginTop: 16,
-    },
+    }
   });
 
   class DateAndTimePickers extends Component {
@@ -31,9 +33,14 @@ const styles = theme => ({
         startDate: new Date(),
         UserId: this.context.login.id,
         desc: '',
+
+        formErrors: {
+          title: "",
+          desc: ""
+        }
     };
 
-     handleTimeStartChange = (e) => {
+    handleTimeStartChange = (e) => {
         const value = e.target.value;
         console.log(value)
         const FormatStartDate = moment(value).format('ddd MMM DD YYYY HH:mm');
@@ -43,7 +50,7 @@ const styles = theme => ({
         })
     };
 
-     handleTimeEndChange = (e) => {
+    handleTimeEndChange = (e) => {
         const value = e.target.value;
         const FormatEndDate = moment(value).format('ddd MMM DD YYYY HH:mm');
         this.setState({
@@ -51,8 +58,32 @@ const styles = theme => ({
         })
     };
 
-     handleChange = (e) => {
+    handleChange = (e) => {
+      const { name, value } = e.target;
+      let formErrors = { ...this.state.formErrors };
+      calendarSucess(e.target.value);
+
+      switch (name) {
+        case 'title':
+          formErrors.title = 
+            value === '' ? 'Add a value'
+            : (!isNaN(value)) ? 'No numbers'
+            : ''
+          break;
+        case 'desc':
+          formErrors.desc = 
+            value === '' ? 'Add a value'
+            : (!isNaN(value)) ? 'No numbers'
+            : ''
+          break;
+
+        default:
+          break;
+      };
+
         this.setState({ [e.target.name]: e.target.value });
+        this.setState({ formErrors, [name]: value });
+
     };
 
      handleSubmit = (e) => {
@@ -69,6 +100,8 @@ const styles = theme => ({
     };
 
   render() {
+    const { formErrors } = this.state;
+
     return (
       <form className={this.props.classes.container} noValidate
       onSubmit={this.handleSubmit}>
@@ -94,6 +127,10 @@ const styles = theme => ({
           }}
           onChange={this.handleTimeEndChange}
         />
+
+        <FormControl>
+        { formErrors.title.length > 0 && (
+          <span className="errorMessage">{formErrors.title}</span> )}
         <TextField
             id="standard-title"
             label="Title"
@@ -104,6 +141,11 @@ const styles = theme => ({
             onChange={this.handleChange}
             autoComplete='off'
           />
+        </FormControl>
+
+        <FormControl>
+          { formErrors.desc.length > 0 && (
+          <span className="errorMessage">{formErrors.desc}</span> )}
           <TextField
             id="standard-desc"
             label="Description"
@@ -114,11 +156,14 @@ const styles = theme => ({
             onChange={this.handleChange}
             autoComplete='off'
           />
-          <button 
-          className='custom_btn'
+        </FormControl>
+
+        <button 
+          className='budget_button'
+          id='disabled_2'
           type="submit" 
           label="submit"
-          primary={true} >Submit</button>
+          primary={true} >Add</button>
   
       </form>
     );

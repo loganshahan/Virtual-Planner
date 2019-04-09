@@ -95,9 +95,7 @@ a:not([href]):not([tabindex]):hover {
 }
 .btn:hover {
   width: 100%;
-  background: var(--red);;
   color: var(--pink);
-  border-color: var(--black);
 }
 form {
     background: var(--maroon);
@@ -108,6 +106,10 @@ form {
 form label, form input, form button {
   color: var(--pink) !important;
 }
+input::after {
+  border-bottom: 2px solid var(--indigo) !important;
+} 
+
 
 /* guess home */
 
@@ -202,6 +204,10 @@ form label, form input, form button {
 .custom_border {
   border-right: 1px solid black !important;
 }
+.custom_border h5 {
+  margin-bottom: 0 !important;
+}
+
 .form-inline .form-group {
   display: flex;
   justify-content: center;
@@ -235,6 +241,9 @@ form label, form input, form button {
 }
 .errorMessage {
   color: var(--pink);
+  position: absolute;
+  bottom: -25px;
+  left: 10px;
 }
 @media all and (max-width: 768px) {
   .custom_title {
@@ -257,9 +266,17 @@ form label, form input, form button {
 
 
 /*CALENDAR*/
+.budget_button {
+  visibility: hidden;
+  width: 90px;
+  height: 35px;
+  border-width: 1px;
+  border-radius: 2px;
+}
 
 .custom_btn {
   background: transparent;
+  box-sizing: border-box;
   border: 1px solid var(--indigo);
   color: var(--black);
   transition: 0.3s all ease 0s;
@@ -270,7 +287,8 @@ form label, form input, form button {
   align-self: flex-end;
   box-shadow: none;
   border-radius: 2px;
-  width: 70px;
+  width: 90px;
+  visibility: visible;
   
 }
 .custom_btn:hover {

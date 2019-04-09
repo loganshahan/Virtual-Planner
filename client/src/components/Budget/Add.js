@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
+import {Budgetsucess} from '../Assets/Sucess';
 
 const styles = theme => ({
   container: {
@@ -23,24 +24,26 @@ class Add extends Component {
         formErrors: {
           description: "",
           amount: ""
-        },
+        }
     }
 
     handleChange = (e) => {
       const { name, value } = e.target;
       let formErrors = { ...this.state.formErrors };
 
+      Budgetsucess(e.target.value);
+
       switch (name) {
         case 'description':
           formErrors.description = 
-            value === '' ? 'Please add a value'
-            : (!isNaN(value)) ? 'Please add a description'
+            value === '' ? 'Add a value'
+            : (!isNaN(value)) ? 'No numbers'
             : ''
           break;
         case 'amount':
           formErrors.amount = 
-            value === '' ? 'Please add a value'
-            : (isNaN(value)) ? 'Please add only numbers'
+            value === '' ? 'Add a value'
+            : (isNaN(value)) ? 'Add numbers'
             : ''
           break;
   
@@ -55,6 +58,10 @@ class Add extends Component {
         this.props.onAdd(this.state.description, this.state.amount);
     };
 
+    componentDidMount() {
+      document.querySelector('#disabled').setAttribute('disabled', true);
+    };
+
   render() {
     const { classes } = this.props;
     const { formErrors } = this.state;
@@ -62,11 +69,13 @@ class Add extends Component {
     return (
       
 <Fragment>
-<div className={classes.container}>
+    <div className={classes.container}>
       <h3>$+ or $- from your budget !</h3>
       <form className="form-inline mb-2 budget_form">
 
         <FormControl className={classes.formControl}>
+           { formErrors.description.length > 0 && (
+          <span className="errorMessage">{formErrors.description}</span> )}
           <Input 
           id="desc" 
           name='description'
@@ -75,11 +84,11 @@ class Add extends Component {
           placeholder='Description'
           autoComplete='off'
            />
-           { formErrors.description.length > 0 && (
-          <span className="errorMessage">{formErrors.description}</span> )}
 
         </FormControl>
         <FormControl className={classes.formControl}>
+           { formErrors.amount.length > 0 && (
+          <span className="errorMessage">{formErrors.amount}</span> )}
           <Input 
           id="amt" 
           name='amount'
@@ -88,17 +97,16 @@ class Add extends Component {
           placeholder='Amount'
           autoComplete='off'
            />
-           { formErrors.amount.length > 0 && (
-          <span className="errorMessage">{formErrors.amount}</span> )}
         </FormControl>
 
         <button 
         type="submit" 
-        className="btn btn-secondary mb-1 mt-1"
+        id="disabled"
+        className="mb-1 mt-1 budget_button"
         onClick={this.add}
         >Calculate</button>
       </form>
-</div>
+    </div>
 </Fragment>
 
     )
