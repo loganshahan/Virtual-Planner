@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import RecentEvents from './RecentEvents';
 import YourBudget from './YourBudget';
@@ -20,7 +20,6 @@ class MainDashboard extends Component {
         lastEvents.map((data) => {
           const tomorrowDate = moment(data.startDate).format('YYYY-MM-DD');
           const todaysDate = moment().format('YYYY-MM-DD');
-          console.log(tomorrowDate, todaysDate)
           if(data.UserId === this.state.UserId && tomorrowDate >= todaysDate) {
             dataSet.push(data);
             this.setState({
@@ -65,22 +64,24 @@ class MainDashboard extends Component {
   render() {
 
     return (
-      <div className="mt-4 container">
-            <h1>Dashboard</h1>
-          <div className="row">
-        <div className="col-md-5">
-        <RecentEvents events={this.state.data} />
-        </div>
+      <Fragment>
+        <h1 className='custom_header'>Dashboard</h1>
+        <div className="mt-4 container">
+            <div className="row">
+          <div className="col-md-5">
+          <RecentEvents events={this.state.data} />
+          </div>
 
-        <div className="col-md-7">
-        <YourBudget
-        positive={this.state.positiveData}
-        negative={this.state.negativeData}
-         />
-        </div>
+          <div className="col-md-7">
+          <YourBudget
+          positive={this.state.positiveData}
+          negative={this.state.negativeData}
+          />
+          </div>
 
+          </div>
         </div>
-      </div>
+      </Fragment>
     )
   }
 }

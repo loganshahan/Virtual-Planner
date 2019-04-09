@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import UserContext from '../../contex/user-context';
 import Add from './Add';
 import TransactionList from './TransactionList';
@@ -27,7 +27,6 @@ class MainBudget extends Component {
           let amtId = data.id;
           let createdDate = data.createdAt;
           let obj = {amount, description, amtId, createdDate};
-          console.log(obj)
           dataSet.push(obj);
             this.setState({
               data: dataSet,
@@ -57,8 +56,10 @@ class MainBudget extends Component {
 
   render() {
     return (
+      <Fragment>
+      <h1 className='custom_header'>Budget</h1>
       <div className="container mt-4">
-  
+
         <div className="row mt-3">
           <div className="col-md-7" style={{alignSelf: 'center'}}>
           <Add onAdd={this.add} data={this.state.data}/>
@@ -74,6 +75,7 @@ class MainBudget extends Component {
         </div>
           <TransactionList transactions={this.state.data}/>
       </div>
+      </Fragment>
     )
   }
 };

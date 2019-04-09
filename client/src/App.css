@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Playfair+Display|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Heebo|Montserrat');
 
 /* // $color1: rgba(255, 242, 234, 1);
 // $color2: rgba(34, 56, 67, 1);
@@ -7,8 +7,8 @@
 // $color5: rgba(51, 51, 51, 1); */
 
 :root {
-  --mainHeading: 'Playfair Display', serif;
-  --mainPara: 'Raleway', sans-serif;
+  --mainHeading: 'Heebo', sans-serif;
+  --mainPara: 'Montserrat', sans-serif;
   --pink: rgba(255, 242, 234, 1);
   --indigo: rgba(34, 56, 67, 1);
   --red: rgba(61, 8, 20, 1);
@@ -66,6 +66,13 @@ button > span {
   }
 }
 
+.custom_header {
+  padding: 30px;
+  background: var(--maroon);
+  color: var(--pink);
+  box-shadow: 2px 2px 8px black;
+}
+
 a {
   color: var(--pink);
 }
@@ -83,19 +90,23 @@ a:not([href]):not([tabindex]):hover {
   width: 100%;
   background: none;
   color: var(--black);
-  border-color: var(--maroon);
+  border-color: var(--black);
 
 }
 .btn:hover {
   width: 100%;
   background: var(--red);;
   color: var(--pink);
+  border-color: var(--black);
 }
 form {
-    background: var(--pink);
+    background: var(--maroon);
     padding: 30px;
     border-radius: 5px;
     box-shadow: 2px 2px 8px black;
+}
+form label, form input, form button {
+  color: var(--pink) !important;
 }
 
 /* guess home */
@@ -105,12 +116,13 @@ form {
   justify-content: space-around;
   align-items: center;
   height: 100%;
+  margin: 5px auto;
   }
 
 .full-height{
   background: rgba(255, 242, 234, 1);
-  /* height: 92vh; */
-  color: var(--red);;
+  height: 65vh;
+  color: var(--red);
 }
 
 .jumbotron {
@@ -133,6 +145,15 @@ form {
 .navbar-expand-lg .navbar-collapse {
   justify-content: flex-end;
   margin: 0 5%;
+}
+.welcome_custom {
+  background: var(--indigo);
+  color: var(--pink);
+  padding: 15px;
+}
+.welcome_custom h3 {
+  background: var(--indigo);
+  color: var(--pink);
 }
 /*Modal*/
 
@@ -212,6 +233,9 @@ form {
 .form-inline {
   justify-content: space-between;
 }
+.errorMessage {
+  color: var(--pink);
+}
 @media all and (max-width: 768px) {
   .custom_title {
     display: none;
@@ -226,11 +250,10 @@ form {
   margin-top: 20px;
   margin-bottom: 10px;
 }
-
+/* 
 .features {
   margin-top: 20px;
-  
-}
+} */
 
 
 /*CALENDAR*/

@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 
 const  Welcome = () => {
   
     return (
-      <div>
+      <Fragment>
         <div className="full-height">
           <div className="container custom_guess">
               <div className="jumbotron">
@@ -14,11 +14,10 @@ const  Welcome = () => {
                   <a className="btn btn-primary btn-lg" href="/auth/google" role="button">Sign Up Today!</a>
               </div>
           </div>
-        </div>
 
+          <div className="container-fluid welcome_custom">
         <div className="row justify-content-center features">
-
-          <div className="col-4">
+          <div className="col-md-4">
             <div className="thumbnail">
               <div className="caption">
               <div className="custom_guess">
@@ -30,7 +29,7 @@ const  Welcome = () => {
             </div>
           </div>
           
-          <div className="col-4">
+          <div className="col-md-4">
             <div className="thumbnail">
               <div className="caption">
               <div className="custom_guess">
@@ -42,7 +41,7 @@ const  Welcome = () => {
             </div>
           </div>
 
-          <div className="col-4">
+          <div className="col-md-4">
             <div className="thumbnail">
               <div className="caption">
                 <div className="custom_guess">
@@ -55,9 +54,11 @@ const  Welcome = () => {
           </div>
 
         </div>
+        </div>
 
-        
-      </div>
+        </div>
+
+      </Fragment>
 
     )
 };
