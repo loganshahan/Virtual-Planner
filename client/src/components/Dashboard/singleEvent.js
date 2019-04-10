@@ -23,7 +23,11 @@ function singleEvent(props) {
     return (
             <Fragment>
 
-                <List>
+                <List
+                data-aos="fade-in"
+                data-aos-easing="ease-in-out"
+                data-aos-delay="200"
+                >
                 <ListItem button 
                 style={{cursor: 'default'}}
                 className="Recent_Title"

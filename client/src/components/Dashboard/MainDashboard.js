@@ -18,8 +18,8 @@ class MainDashboard extends Component {
         const lastEvents = data.data;
         const dataSet = [];
         lastEvents.map((data) => {
-          const tomorrowDate = moment(data.startDate).format('YYYY-MM-DD');
-          const todaysDate = moment().format('YYYY-MM-DD');
+          const tomorrowDate = moment(data.startDate).format('YYYY-MM-DD HH:mm');
+          const todaysDate = moment().format('YYYY-MM-DD HH:mm');
           if(data.UserId === this.state.UserId && tomorrowDate >= todaysDate) {
             dataSet.push(data);
             this.setState({
@@ -38,21 +38,21 @@ class MainDashboard extends Component {
       const negative = [];
       amt.map((data) => {
         if(data.UserId === this.state.UserId) {
-          const amount = parseFloat(data.amount)
+          const amount = parseFloat(data.amount);
 
           if(amount < 0) {
             negative.push(amount);
             negative.filter(function (a) { return a >= 0; });
             const sumLess = negative.reduce(function (a, b) { return a + b; });
             this.setState({
-              negativeData: sumLess
+              negativeData: parseFloat(sumLess).toFixed(2)
             })
           } else {
             positive.push(amount);
             positive.filter(function (a) { return a >= 0; });
             const sumPlus = positive.reduce(function (a, b) { return a + b; });
             this.setState({
-              positiveData: sumPlus
+              positiveData: parseFloat(sumPlus).toFixed(2)
              
             })
           }
@@ -77,6 +77,7 @@ class MainDashboard extends Component {
           positive={this.state.positiveData}
           negative={this.state.negativeData}
           />
+
           </div>
 
           </div>
