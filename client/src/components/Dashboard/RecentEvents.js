@@ -5,7 +5,8 @@ import SingleEvent from './singleEvent';
       const {events} = props;
       if(events.length === 0) {
         return(
-          <div className='custom_no'>
+          <div className='custom_no'
+          >
             <h5>You don't have any events in your calendar</h5>
           </div>
         )

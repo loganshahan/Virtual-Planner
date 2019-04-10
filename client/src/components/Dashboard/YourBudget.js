@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {Doughnut} from 'react-chartjs-2';
 
 
-export class YourBudget extends Component {
+export class YourBudget extends PureComponent {
 	
   render() {
 		const {positive, negative} = this.props;

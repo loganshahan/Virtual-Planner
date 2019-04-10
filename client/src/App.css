@@ -110,6 +110,9 @@ input::after {
   border-bottom: 2px solid var(--indigo) !important;
 } 
 
+i {
+  margin: 0 15px;
+}
 
 /* guess home */
 

@@ -5,7 +5,6 @@ import moment from 'moment';
 
 function TransactionListEntry(props) {
     const {transaction} = props
-    console.log(transaction)
 
     const style = {
         color: transaction.amount > 0 ? 'green' : 'red',
@@ -19,7 +18,13 @@ function TransactionListEntry(props) {
     
 
   return (
-    <div className="row custom_table" style={{alignItems: 'center'}}>
+    <div className="row custom_table"
+     style={{alignItems: 'center'}}
+     data-aos="fade-in"
+     data-aos-easing="ease-in-out"
+     data-aos-delay="100"
+     data-aos-offset="15"
+     >
         <div className="col-md-4 custom_border">
           {
             moment(transaction.createdDate).format('LLLL')
