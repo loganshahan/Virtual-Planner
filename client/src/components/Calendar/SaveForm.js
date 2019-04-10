@@ -12,10 +12,12 @@ const styles = theme => ({
     container: {
       display: 'flex',
       flexWrap: 'wrap',
+      justifyContent: 'space-around'
     },
     textField: {
       marginLeft: theme.spacing.unit,
       marginRight: theme.spacing.unit,
+
     },
     dense: {
       marginTop: 16,
