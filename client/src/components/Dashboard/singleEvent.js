@@ -27,6 +27,7 @@ function singleEvent(props) {
                 data-aos="fade-in"
                 data-aos-easing="ease-in-out"
                 data-aos-delay="200"
+                data-aos-offset="0"
                 >
                 <ListItem button 
                 style={{cursor: 'default'}}

@@ -16,6 +16,7 @@ export class Nav extends Component {
       default:
          return (
            <Fragment>
+            <Link to="/">Dashboard</Link>
             <Link to="/home/MainTodo">Todo</Link>
             <Link to="/home/MainBudget">Budget</Link>
             <Link to="/home/MainCalendar">Calendar</Link>

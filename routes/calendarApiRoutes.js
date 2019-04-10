@@ -59,7 +59,7 @@ module.exports = function (app) {
           UserId: req.params.id
         },
         order: [['startDate', 'ASC']],
-        limit: 4,
+        limit: 5,
         include: [db.User]
       }).then(function (dbCalendr) {
         res.json(dbCalendr);
