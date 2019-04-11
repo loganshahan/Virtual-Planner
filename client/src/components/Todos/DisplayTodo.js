@@ -2,6 +2,53 @@ import React, {Fragment} from 'react';
 import axios from 'axios';
 import moment from 'moment';
 
+
+function MarkCompBtn(props) {
+    const {customID} = props;
+    console.log(customID.todo);
+
+    const handleMarkComplete = (e) => {
+        let id = e.currentTarget.getAttribute('id');
+
+        axios.put(`/api/todos/${id}`, {isComplete: 1}).then(response => {
+            console.log(response);
+        });
+
+        // window.location.reload();
+    }
+
+    const dispBtn = () => {
+        //This code is printing one button for to-do on every to-do item
+        //We only want it to print one button
+        //I am not sure how we specify the particular ID of the button that we need
+
+        return customID.todo.map((val, index) => {
+            console.log(val.id);
+            console.log(val.isComplete);
+    
+            return (
+                <div>                
+                <button 
+                className="btn btn-primary mark-complete" onClick={handleMarkComplete} id={val.id}>Mark Complete Componen1t</button>
+                </div>
+
+            )
+        });
+    }
+
+
+
+
+    return(
+        <Fragment>
+        {dispBtn()}
+        </Fragment>
+    )
+
+
+
+}
+
 function DisplayTodo(props) {
     const todos = props.todo;
 
@@ -21,15 +68,18 @@ function DisplayTodo(props) {
 
     }
 
-    const handleMarkComplete = (e) => {
-        let id = e.currentTarget.getAttribute('id');
-
-        axios.put(`/api/todos/${id}`, {isComplete: 1}).then(response => {
-            console.log(response);
-        });
-
-        window.location.reload();
+    const displayComplete = (isComp) => {
+        
+        if (isComp == 0) {
+            return <MarkCompBtn customID = {props}/>
+        } else {
+            console.log("not complete!");
+        }
     }
+
+
+
+
     const renderTodos = () => {
         return todos.map( (todo, index) => {
             const {id, title, body, category, isComplete, createdAt} = todo;
@@ -46,7 +96,7 @@ function DisplayTodo(props) {
                     <p className="mb-1"> {body} </p>
                     <small> {category} </small>
                     <div>
-                        <button id={id} onClick={handleMarkComplete} className="btn btn-primary mark-complete">Mark Complete</button>
+                    {displayComplete(isComplete)}
                     </div>
                     <div>
                         <button id={id} onClick={handleDelete} className="btn btn-danger">Remove</button>
@@ -58,6 +108,7 @@ function DisplayTodo(props) {
             )
         })   
     };
+
     return(
         <Fragment>
             {renderTodos()}
@@ -66,3 +117,7 @@ function DisplayTodo(props) {
 };
 
 export default DisplayTodo
+
+
+// <button id={id} onClick={handleMarkComplete} 
+// className="btn btn-primary mark-complete">Mark Complete</button>
