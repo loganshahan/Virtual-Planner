@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import axios from 'axios';
+import moment from 'moment';
 
 function DisplayTodo(props) {
     const todos = props.todo;
@@ -31,7 +32,7 @@ function DisplayTodo(props) {
     }
     const renderTodos = () => {
         return todos.map( (todo, index) => {
-            const {id, title, body, category} = todo;
+            const {id, title, body, category, isComplete, createdAt} = todo;
             return(
                 
         <div className="list-group" key={index}>
@@ -40,6 +41,7 @@ function DisplayTodo(props) {
 
                     <div className="d-flex w-100 justify-content-between">
                         <h5 className="mb-1"> {title} </h5>
+                        <h6>{moment(createdAt).format('MMM Do YYYY')}</h6>
                     </div>
                     <p className="mb-1"> {body} </p>
                     <small> {category} </small>
