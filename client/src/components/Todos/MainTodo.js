@@ -20,6 +20,7 @@ export class MainTodo extends Component {
             category: 'select'
         });
         this.props.handleClose();
+        window.location.reload()
     };
 
     handleChange = (e) => {
@@ -41,7 +42,7 @@ export class MainTodo extends Component {
 
     return (
       <div className={showModal}>
-        <form onSubmit={this.handleSubmit}>
+        <form className='custom_modal' onSubmit={this.handleSubmit}>
 
         <div className="form-group">
             <input 
@@ -67,7 +68,7 @@ export class MainTodo extends Component {
             />
         </div>
 
-        <div className="form-group">
+        {/* <div className="form-group">
         <select id="category"
          onChange={this.handleCategory} 
          value={this.state.category}
@@ -80,11 +81,11 @@ export class MainTodo extends Component {
             <option value="school">School</option>
         </select>
 
-        </div>
+        </div> */}
         <div className="form-group">
             <input 
             type="submit" 
-            className="btn btn-success"
+            className="btn btn-success custom_todo_btn"
             value="Add" 
             />
         </div>

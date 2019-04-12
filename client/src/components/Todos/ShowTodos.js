@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import UserContext from '../../contex/user-context';
-import DisplayTodo from './DisplayTodo'
+import DisplayTodo from './DisplayTodo';
 
 export class ShowTodos extends Component {
 
@@ -34,10 +34,10 @@ export class ShowTodos extends Component {
 
   render() {
     return (
-      <div>
-
-        <DisplayTodo todo={this.state.todos} />
-
+      <div className='container'>
+        <div className="row">
+          <DisplayTodo todo={this.state.todos} />
+        </div>
       </div>
     )
   }
