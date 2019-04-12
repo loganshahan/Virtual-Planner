@@ -11,6 +11,7 @@ module.exports = function (app) {
 
     db.Todo.findAll({
       where: query,
+      order: [['isComplete', 'ASC']],
       include: [{
         model: db.User
       }]
@@ -24,6 +25,20 @@ module.exports = function (app) {
     db.Todo.findOne({
       where: {
         id: req.params.id
+      },
+      include: [{
+        model: db.User
+      }]
+    }).then(function (dbTodo) {
+      res.json(dbTodo);
+    });
+  });
+  
+  // GET one Todo by complete
+  app.get("/api/todos/not/:completedid", function (req, res) {
+    db.Todo.findAll({
+      where: {
+        isComplete: req.params.completedid
       },
       include: [{
         model: db.User

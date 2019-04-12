@@ -259,14 +259,40 @@ i {
 }
 
 /* TO DOS */
+
 .mark-complete {
-  margin-top: 20px;
-  margin-bottom: 10px;
+  text-decoration: line-through;
+  background: #d3d3d3 !important;
 }
-/* 
-.features {
-  margin-top: 20px;
-} */
+.mark-complete:hover {
+  text-decoration: line-through;
+  background: #d3d3d3 !important;
+}
+.list-group-item {
+  background-color: var(--pink);
+}
+.list-group-item:hover {
+  background-color: var(--pink);
+}
+.custom_todo_btn {
+  width:55%;
+  transition: 0.2s all ease 0 !important;
+  box-sizing: border-box;
+}
+.custom_todo_btn:hover {
+  width: 100%;
+  transition: 0.2s all ease 0 !important;
+  box-sizing: border-box;
+  border-color: var(--black);
+}
+
+.custom_modal input {
+  color: black !important;
+}
+.custom_modal .btn {
+  color: var(--pink) !important;
+  border-color: var(--black);
+}
 
 
 /*CALENDAR*/
@@ -296,11 +322,56 @@ i {
   
 }
 .custom_btn:hover {
+  background: transparent;
+  box-sizing: border-box;
+  border: 1px solid var(--indigo);
+  color: var(--black);
+  transition: 0.3s all ease 0s;
+  cursor: pointer;
+  height: 35px !important;
+  vertical-align: middle;
+  justify-content: center;
+  align-self: flex-end;
+  box-shadow: none;
+  border-radius: 2px;
+  width: 90px;
+  visibility: visible;
+  
+}
+.full-height  .custom_btn {
+  background: transparent;
+  box-sizing: border-box;
+  border: 1px solid var(--indigo);
+  color: var(--black);
+  transition: 0.3s all ease 0s;
+  cursor: pointer;
+  height: 50px;
+  vertical-align: middle;
+  justify-content: center;
+  align-self: flex-end;
+  box-shadow: none;
+  border-radius: 2px;
+  width: 50%;
+}
+.full-height .custom_btn:hover {
+  box-sizing: border-box;
+  border: 1px solid var(--indigo);
+  transition: 0.3s all ease 0s;
+  cursor: pointer;
+  height: 50px !important;
+  vertical-align: middle;
+  justify-content: center;
+  align-self: flex-end;
+  box-shadow: none;
+  border-radius: 2px;
+  width: 100%;
+}
+.custom_btn:hover {
   background: var(--red);
   border: 1px solid var(--maroon);
   color: var(--pink);
   cursor: pointer;
-  height: 35px;
+  height: 50px;
   vertical-align: middle;
   justify-content: center;
   align-self: flex-end;

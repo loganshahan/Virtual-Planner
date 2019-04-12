@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
+    "password": "",
     "database": "FourGer",
     "host": "localhost",
     "dialect": "mysql"

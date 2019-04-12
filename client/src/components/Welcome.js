@@ -14,7 +14,7 @@ const  Welcome = () => {
                   <p className="lead">VP is the best free virtual assistant</p>
                   <hr className="my-4" />
                   <p>Make to do lists. Track your budget. Manage your calendar. All for free.</p>
-                  <a className="btn btn-primary btn-lg" href="/auth/google" role="button">Sign Up Today!</a>
+                  <a className="btn btn-primary btn-lg custom_btn" href="/auth/google" role="button">Sign Up Today!</a>
               </div>
           </div>
 
@@ -26,7 +26,7 @@ const  Welcome = () => {
           data-aos-easing="ease-out"
           data-aos-offset="15"
           >
-              <i class="fas fa-list-ul fa-5x"></i>
+              <i className="fas fa-list-ul fa-5x"></i>
               <div className="row">
                 <div className="col-md-12">
                 <h3>Track your to dos</h3>
@@ -41,7 +41,7 @@ const  Welcome = () => {
           data-aos-easing="ease-out"
           data-aos-offset="15"
           >
-                <i class="fas fa-piggy-bank fa-5x"></i>
+                <i className="fas fa-piggy-bank fa-5x"></i>
               <div className="row">
                 <div className="col-md-12">
                 <h3>Manage your budget</h3>
@@ -56,7 +56,7 @@ const  Welcome = () => {
           data-aos-easing="ease-out"
           data-aos-offset="15"
           >
-                 <i class="far fa-calendar-alt fa-5x"></i>
+                 <i className="far fa-calendar-alt fa-5x"></i>
               <div className="row">
                 <div className="col-md-12">
                 <h3>Update your calendar</h3>

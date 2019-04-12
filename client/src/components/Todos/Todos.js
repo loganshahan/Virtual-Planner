@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import UserContext from '../../contex/user-context';
 import MainTodo from './MainTodo';
 import ShowTodos from './ShowTodos';
+import MainCategory from './Categories/MainCategory';
 
 export class Home extends Component {
 
@@ -21,32 +22,34 @@ export class Home extends Component {
 
   render() {
     return (
-      <div>
+      <Fragment>
+      <h1 className='custom_header'>Todos</h1>
         <div className="container mt-4">            
             <div className="row">
 
+            {/* post todos container */}
+            <div className="col-md-3">
+                <button onClick={this.showModal}
+                className="btn btn-primary custom_todo_btn">
+                   <i className='fa fa-plus'></i>
+                </button>
+                  <MainTodo show={this.state.show} handleClose={this.hideModal} />
+                </div>
+
                 {/* get todos container */}
-                <div className="col-md-4">
-                    <h2>Existing To Dos</h2>
+                <div className="col-md-9">
                     <ShowTodos />
                 </div>
 
                 {/* filter todos container */}
-                <div className="col-md-4">
+                {/* <div className="col-md-4">
                     <h2>Filter by Category</h2>
-                </div>
+                    <MainCategory />
+                </div> */}
 
-                {/* post todos container */}
-                <div className="col-md-4">
-                <button onClick={this.showModal}
-                className="btn btn-primary">
-                   Add Todo
-                </button>
-                  <MainTodo show={this.state.show} handleClose={this.hideModal} />
-                </div>
             </div>
         </div>
-      </div>
+      </Fragment>
     )
   }
 }

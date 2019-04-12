@@ -3,6 +3,7 @@ import axios from 'axios';
 import RecentEvents from './RecentEvents';
 import YourBudget from './YourBudget';
 import moment from 'moment';
+import NotCompletedTodos from './NotCompletedTodos'
 
 class MainDashboard extends Component {
 
@@ -11,13 +12,14 @@ class MainDashboard extends Component {
       data: [],
       positiveData: 0,
       negativeData: 0,
+      unCompleted: []
     }
 
     componentDidMount() {
       axios.get(`/api/events/recent/${this.state.UserId}`).then(data => {
         const lastEvents = data.data;
         const dataSet = [];
-        lastEvents.map((data) => {
+        return lastEvents.map((data) => {
           const tomorrowDate = moment(data.startDate).format('YYYY-MM-DD HH:mm');
           const todaysDate = moment().format('YYYY-MM-DD HH:mm');
           if(data.UserId === this.state.UserId && tomorrowDate >= todaysDate) {
@@ -28,7 +30,8 @@ class MainDashboard extends Component {
           }
         })
       });
-      this.budgetData()
+      this.budgetData();
+      this.unCompletedTodo();
     };
 
   budgetData = () => {
@@ -61,24 +64,42 @@ class MainDashboard extends Component {
     });
   };
 
+  unCompletedTodo = () => {
+    axios.get(`/api/todos/not/0`).then(data => {
+      const notYet = data.data;
+      const dataSet = [];
+      notYet.map((data) => {
+        if(data.UserId === this.state.UserId) {
+          dataSet.push(data)
+          this.setState({
+            unCompleted: dataSet
+          })
+        };
+      })
+    })
+  };
+
   render() {
 
     return (
       <Fragment>
         <h1 className='custom_header'>Dashboard</h1>
-        <div className="mt-4 container">
+        <div className="mt-4 container mb-5">
             <div className="row">
+
           <div className="col-md-5">
-          <RecentEvents events={this.state.data} />
+            <RecentEvents events={this.state.data} />
           </div>
 
-          <div className="col-md-7">
-          <YourBudget
-          positive={this.state.positiveData}
-          negative={this.state.negativeData}
-          />
+              <div className="col-md-7">
+                  <YourBudget
+                  positive={this.state.positiveData}
+                  negative={this.state.negativeData}
+                  />
 
-          </div>
+                  <NotCompletedTodos notcompleted={this.state.unCompleted} />
+
+              </div>
 
           </div>
         </div>
