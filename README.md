@@ -1,6 +1,6 @@
 # Virtual Planner:
 
-This easy to use application is the perfect tool to organize your daily life.  Keep track of to-do's, budget and calendar events. The personalized dashboard gives you access to all of these features. Enjoy planning made easy and watch your productivity soar!
+This easy-to-use application is the perfect tool to organize your daily life.  Keep track of to-do's, budget and calendar events. The personalized dashboard gives you access to all of these features. Enjoy planning made easy and watch your productivity soar!
 
 ## [Deployed Here](https://blooming-refuge-52964.herokuapp.com)
 
