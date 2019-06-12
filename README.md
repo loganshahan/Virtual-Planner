@@ -4,6 +4,12 @@ This easy to use application is the perfect tool to organize your daily life.  K
 
 ## [Deployed Here](https://blooming-refuge-52964.herokuapp.com)
 
+# Getting Started
+- Clone repo
+- Run 'npm install' in the root directory
+- Run 'npm install' in the client directory
+- Run 'npm run dev' in the root directory
+
 # Technologies Used: 
 
 * [Node](https://nodejs.org/en/) - Back-End JS
