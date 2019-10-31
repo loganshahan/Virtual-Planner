@@ -22,7 +22,7 @@
     "nodemon": "latest",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^2.0.0",
-    "sequelize": "^4.38.0",
+    "sequelize": "^5.15.1",
     "style-loader": "^0.23.1"
   },
   "devDependencies": {
